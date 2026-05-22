@@ -1,0 +1,1533 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AISA Mega Study Guide — T1-T11 Complete</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Sarabun:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<script>
+window.MathJax = {
+  tex: { inlineMath: [['$','$']], displayMath: [['$$','$$']] },
+  svg: { fontCache: 'global' }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+  :root {
+    --bg: #0b0f1a; --bg-card: #131929; --bg-card-2: #1a2238;
+    --border: #1f2942; --border-strong: #2c3a5c;
+    --text: #e8ecf5; --text-dim: #8b96b3; --text-bright: #ffffff;
+    --accent: #6ee7ff; --warn: #fbbf24; --danger: #f87171;
+    --good: #4ade80; --info: #5fa4ff; --magic: #b88aff;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Sarabun', 'Segoe UI', system-ui, sans-serif;
+    background:
+      radial-gradient(circle at 20% 10%, rgba(110,231,255,0.06) 0%, transparent 40%),
+      radial-gradient(circle at 80% 90%, rgba(184,138,255,0.05) 0%, transparent 50%),
+      var(--bg);
+    color: var(--text);
+    font-size: 14px;
+    line-height: 1.55;
+    min-height: 100vh;
+    padding: 20px 14px 60px;
+  }
+  .container { max-width: 1100px; margin: 0 auto; }
+  code, .mono { font-family: 'IBM Plex Mono', monospace; font-size: 0.9em; }
+
+  /* Header */
+  .hero {
+    background: linear-gradient(135deg, rgba(110,231,255,0.12), rgba(184,138,255,0.06)), var(--bg-card);
+    border: 1px solid var(--border-strong);
+    border-radius: 20px;
+    padding: 24px 28px;
+    margin-bottom: 20px;
+  }
+  .hero h1 { font-size: 24px; font-weight: 800; color: var(--text-bright); margin-bottom: 6px; }
+  .hero .subtitle { color: var(--text-dim); font-size: 13px; }
+  .hero .meta { margin-top: 10px; display: flex; gap: 8px; flex-wrap: wrap; }
+  .hero .meta span { background: rgba(110,231,255,0.08); border: 1px solid rgba(110,231,255,0.25); padding: 3px 9px; border-radius: 999px; font-size: 11px; color: var(--accent); }
+
+  /* TOC sticky on desktop */
+  .toc {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 18px;
+    margin-bottom: 22px;
+  }
+  .toc h3 { color: var(--text-dim); font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 10px; font-weight: 700; }
+  .toc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 8px; }
+  .toc-item {
+    background: var(--bg-card-2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 8px 12px;
+    color: var(--text);
+    text-decoration: none;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.15s;
+  }
+  .toc-item:hover { border-color: var(--accent); color: var(--accent); transform: translateX(2px); }
+  .toc-item .tag { background: var(--accent); color: var(--bg); padding: 1px 6px; border-radius: 4px; font-weight: 800; font-size: 10px; }
+
+  /* Topic section */
+  .topic {
+    background: var(--bg-card);
+    border: 1px solid var(--border-strong);
+    border-radius: 16px;
+    padding: 22px 24px;
+    margin-bottom: 22px;
+    scroll-margin-top: 16px;
+  }
+  .topic-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--border);
+  }
+  .topic-tag {
+    background: linear-gradient(135deg, var(--accent), var(--info));
+    color: var(--bg);
+    padding: 4px 12px;
+    border-radius: 8px;
+    font-weight: 800;
+    font-size: 12px;
+    letter-spacing: 0.04em;
+  }
+  .topic h2 { font-size: 20px; color: var(--text-bright); font-weight: 700; }
+  .topic h3 { color: var(--accent); font-size: 15px; font-weight: 700; margin: 18px 0 8px; padding-bottom: 4px; border-bottom: 1px solid var(--border); }
+  .topic h4 { color: var(--info); font-size: 13px; font-weight: 700; margin: 12px 0 6px; }
+  .topic p { margin-bottom: 8px; }
+  .topic ul, .topic ol { padding-left: 20px; margin: 6px 0; }
+  .topic li { margin-bottom: 4px; }
+
+  /* Formula card */
+  .fcard {
+    background: var(--bg-card-2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 16px;
+    margin: 10px 0;
+  }
+  .fcard .ftitle { font-weight: 700; color: var(--text-bright); margin-bottom: 6px; font-size: 14px; display: flex; align-items: baseline; gap: 6px; }
+  .fcard .fnum { background: rgba(110,231,255,0.15); color: var(--accent); padding: 1px 6px; border-radius: 4px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 700; }
+  .fcard .fen { color: var(--text-dim); font-size: 11px; font-style: italic; font-weight: 400; }
+  .fcard .fmath { background: rgba(0,0,0,0.25); padding: 10px 12px; border-radius: 6px; text-align: center; margin: 6px 0; overflow-x: auto; }
+  .fcard .fnote { font-size: 12px; color: var(--text-dim); margin-top: 4px; }
+  .fcard .fnote .k { color: var(--accent); font-weight: 600; }
+  .fcard .fnote .t { color: var(--warn); font-weight: 600; }
+  .fcard .fnote .b { color: var(--danger); font-weight: 600; }
+  .fcard .fnote .g { color: var(--good); font-weight: 600; }
+
+  /* Tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0;
+    font-size: 12px;
+    background: var(--bg-card-2);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  th, td { padding: 8px 10px; text-align: left; border-bottom: 1px solid var(--border); }
+  th { background: rgba(110,231,255,0.08); color: var(--accent); font-weight: 700; font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; }
+  tr:last-child td { border-bottom: none; }
+  td.center, th.center { text-align: center; }
+  td strong { color: var(--text-bright); }
+  .ok { color: var(--good); font-weight: 600; }
+  .bad { color: var(--danger); font-weight: 600; }
+  .warn { color: var(--warn); font-weight: 600; }
+  .info { color: var(--info); font-weight: 600; }
+
+  /* Highlight boxes */
+  .box {
+    border-radius: 10px;
+    padding: 10px 14px;
+    margin: 10px 0;
+    font-size: 13px;
+  }
+  .box.memory { background: linear-gradient(135deg, rgba(74,222,128,0.10), rgba(110,231,255,0.04)); border: 1px solid rgba(74,222,128,0.30); }
+  .box.memory .lbl { color: var(--good); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700; margin-bottom: 4px; }
+  .box.trap { background: linear-gradient(135deg, rgba(248,113,113,0.10), rgba(251,191,36,0.04)); border: 1px solid rgba(248,113,113,0.30); }
+  .box.trap .lbl { color: var(--danger); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700; margin-bottom: 4px; }
+  .box.info { background: linear-gradient(135deg, rgba(95,164,255,0.10), rgba(110,231,255,0.04)); border: 1px solid rgba(95,164,255,0.30); }
+  .box.info .lbl { color: var(--info); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700; margin-bottom: 4px; }
+
+  /* Payoff diagrams via SVG */
+  .payoff-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+    margin: 12px 0;
+  }
+  .payoff {
+    background: var(--bg-card-2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px;
+    text-align: center;
+  }
+  .payoff svg { width: 100%; height: 140px; }
+  .payoff .pname { font-weight: 700; font-size: 13px; color: var(--text-bright); margin-bottom: 4px; }
+  .payoff .pnote { font-size: 11px; color: var(--text-dim); }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 11px;
+    margin-top: 30px;
+    padding-top: 18px;
+    border-top: 1px solid var(--border);
+  }
+
+  /* Mobile */
+  @media (max-width: 640px) {
+    body { padding: 14px 10px; font-size: 13px; }
+    .hero { padding: 18px 16px; }
+    .hero h1 { font-size: 20px; }
+    .topic { padding: 18px 16px; }
+    .topic h2 { font-size: 17px; }
+    .topic h3 { font-size: 14px; }
+    .fcard { padding: 10px 12px; }
+    th, td { padding: 6px 8px; font-size: 11px; }
+    .toc-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media print {
+    body { background: white; color: black; padding: 10px; font-size: 11px; }
+    .topic, .hero, .fcard, .toc, .box { border: 1px solid #999; background: white; page-break-inside: avoid; }
+    .fcard .fmath { background: #f5f5f5; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <h1>AISA Mega Study Guide — T1 to T11 Complete</h1>
+  <p class="subtitle">เนื้อหาครบ 11 วิชา · สูตร ~80+ · ตาราง · กราฟ · trap patches · สำหรับ exam 24 พ.ค. 2026 09:30 UTCC อาคาร 7</p>
+  <div class="meta">
+    <span>Created: 2026-05-22</span>
+    <span>Mobile-ready</span>
+    <span>Print-friendly</span>
+    <span>LaTeX-rendered (MathJax)</span>
+  </div>
+</div>
+
+<!-- ============ TOC ============ -->
+<div class="toc">
+  <h3>11 วิชา — Quick Navigation</h3>
+  <div class="toc-grid">
+    <a class="toc-item" href="#t1"><span class="tag">T1</span>จรรยาบรรณ</a>
+    <a class="toc-item" href="#t2"><span class="tag">T2</span>GIPS</a>
+    <a class="toc-item" href="#t3"><span class="tag">T3</span>เกณฑ์</a>
+    <a class="toc-item" href="#t4"><span class="tag">T4</span>หลักการลงทุน</a>
+    <a class="toc-item" href="#t5"><span class="tag">T5</span>การเงินธุรกิจ</a>
+    <a class="toc-item" href="#t6"><span class="tag">T6</span>งบการเงิน</a>
+    <a class="toc-item" href="#t7"><span class="tag">T7</span>ตราสารทุน</a>
+    <a class="toc-item" href="#t8"><span class="tag">T8</span>ตราสารหนี้</a>
+    <a class="toc-item" href="#t9"><span class="tag">T9</span>อนุพันธ์</a>
+    <a class="toc-item" href="#t10"><span class="tag">T10</span>กองทุนรวม</a>
+    <a class="toc-item" href="#t11"><span class="tag">T11</span>กลุ่มหลักทรัพย์</a>
+    <a class="toc-item" href="#anti-trap"><span class="tag">★</span>Anti-Trap Ritual</a>
+  </div>
+</div>
+
+<!-- ============ T1 ============ -->
+<section class="topic" id="t1">
+  <div class="topic-header">
+    <span class="topic-tag">T1</span>
+    <h2>จรรยาบรรณ &amp; มาตรฐานการปฏิบัติวิชาชีพ (Ethics)</h2>
+  </div>
+
+  <h3>6 มาตรฐานหลัก (CFA / ASCO adapted)</h3>
+  <table>
+    <tr><th>มาตรฐาน</th><th>หัวข้อ</th><th>Key Points</th></tr>
+    <tr><td>1</td><td>ความเป็นมืออาชีพ (Professionalism)</td><td>(ก) Knowledge of Law · (ข) Independence &amp; Objectivity · (ค) Misrepresentation · (ง) Misconduct</td></tr>
+    <tr><td>2</td><td>ความซื่อสัตย์ในตลาดทุน (Market Integrity)</td><td>(ก) Material Non-public Information · (ข) Market Manipulation</td></tr>
+    <tr><td>3</td><td>หน้าที่ต่อลูกค้า (Duties to Clients)</td><td>(ก) Loyalty/Prudence · (ข) Fair Dealing · (ค) Suitability · (ง) Performance Presentation · (จ) Confidentiality</td></tr>
+    <tr><td>4</td><td>หน้าที่ต่อนายจ้าง (Duties to Employer)</td><td>(ก) Loyalty · (ข) Additional Compensation · (ค) Supervisor Responsibilities</td></tr>
+    <tr><td>5</td><td>การวิเคราะห์การลงทุน (Investment Analysis)</td><td>(ก) Diligence &amp; Reasonable Basis · (ข) Communication · (ค) Record Retention</td></tr>
+    <tr><td>6</td><td>ความขัดแย้งทางผลประโยชน์ (Conflicts)</td><td>(ก) Disclosure · (ข) Priority of Transactions · (ค) Referral Fees</td></tr>
+  </table>
+
+  <h3>Key Rules ที่ออกบ่อย</h3>
+  <div class="box info">
+    <div class="lbl">Cross-Border Rule (มาตรฐาน 1.ก)</div>
+    เมื่อทำงานข้ามประเทศ → ใช้ <span class="info">"strictest standard"</span> ระหว่าง local law · CFA/ASCO standards · employer rules<br>
+    • ถ้า local law &lt; standards → ใช้ standards · disclose ส่วนที่ต่าง<br>
+    • ถ้า local law &gt; standards → ใช้ local law
+  </div>
+
+  <div class="box trap">
+    <div class="lbl">Top Traps in T1</div>
+    • <strong>MNPI:</strong> ใช้ได้แม้แค่ "mosaic" (รวมข้อมูล public หลายชิ้น) แต่ห้ามใช้ <strong>single non-public</strong> piece<br>
+    • <strong>Trade allocation:</strong> ต้อง pro-rata fair · ห้าม allocate "ของดี" ให้บัญชีตัวเอง<br>
+    • <strong>Gifts:</strong> รับได้ถ้าไม่กระทบ independence + disclose · refer fee ต้อง disclose<br>
+    • <strong>Independence:</strong> Issuer-sponsored research ต้อง disclose + maintain objectivity<br>
+    • <strong>Suitability:</strong> ต้อง update IPS ก่อนแนะนำ · ห้าม "one-size-fits-all"
+  </div>
+
+  <h3>Order of Action when Conflict</h3>
+  <ol>
+    <li><strong>Dissociate</strong> จากกิจกรรมผิด</li>
+    <li><strong>Report</strong> ต่อ supervisor/legal</li>
+    <li>ถ้าไม่ได้รับการแก้ → <strong>resign</strong> (ห้ามอยู่และนิ่ง)</li>
+  </ol>
+</section>
+
+<!-- ============ T2 ============ -->
+<section class="topic" id="t2">
+  <div class="topic-header">
+    <span class="topic-tag">T2</span>
+    <h2>GIPS — Global Investment Performance Standards</h2>
+  </div>
+
+  <h3>หลักการสำคัญ</h3>
+  <ul>
+    <li><strong>Voluntary</strong> — บริษัทเลือกเอง · ต้อง declare compliance ตามรูปแบบที่กำหนด</li>
+    <li><strong>Firm-wide</strong> compliance — ห้าม partial (เลือกบาง strategy)</li>
+    <li><strong>Composite</strong> — รวม portfolio ที่บริหารใน strategy เดียวกัน เพื่อ fair comparison</li>
+    <li><strong>Discretionary</strong> portfolios only — non-discretionary ห้ามรวม composite</li>
+    <li><strong>Time-Weighted Return (TWR)</strong> เป็นมาตรฐาน (ไม่ใช่ MWR)</li>
+  </ul>
+
+  <h3>Return Formulas</h3>
+
+  <div class="fcard">
+    <div class="ftitle"><span class="fnum">G1</span>Holding Period Return (HPR) <span class="fen">/ Single Period Return</span></div>
+    <div class="fmath">$$HPR = \frac{P_1 - P_0 + D_1}{P_0} = \frac{P_1 + D_1}{P_0} - 1$$</div>
+    <div class="fnote">$P_0$ = ราคาซื้อ · $P_1$ = ราคาขาย · $D_1$ = dividend/income · ใช้กับ single period</div>
+  </div>
+
+  <div class="fcard">
+    <div class="ftitle"><span class="fnum">G2</span>Time-Weighted Return (TWR) <span class="fen">/ Geometric chain link</span></div>
+    <div class="fmath">$$TWR = [(1 + HPR_1)(1 + HPR_2)\cdots(1 + HPR_n)]^{1/n} - 1$$</div>
+    <div class="fnote">
+      <span class="k">GIPS standard</span> — ตัดผลของ cash flow timing<br>
+      • Geometric mean ของ sub-period returns<br>
+      • วัด manager skill (ไม่นับ client's deposit/withdrawal timing)
+    </div>
+  </div>
+
+  <div class="fcard">
+    <div class="ftitle"><span class="fnum">G3</span>Money-Weighted Return (MWR) <span class="fen">= IRR of cash flows</span></div>
+    <div class="fmath">$$0 = \sum_{t=0}^{n} \frac{CF_t}{(1 + MWR)^t}$$</div>
+    <div class="fnote">
+      • = IRR (Internal Rate of Return)<br>
+      <span class="t">Trap: MWR ได้รับผลจาก cash flow timing</span> → ไม่ fair compare manager
+    </div>
+  </div>
+
+  <div class="fcard">
+    <div class="ftitle"><span class="fnum">G4</span>Arithmetic vs Geometric Mean</div>
+    <div class="fmath">$$AM = \frac{\sum R_i}{n} \qquad GM = \left[\prod (1+R_i)\right]^{1/n} - 1$$</div>
+    <div class="fnote">
+      • <span class="k">AM &ge; GM</span> เสมอ (equal เฉพาะเมื่อ R ทุกตัวเท่ากัน)<br>
+      • AM = expected single-period (forecast)<br>
+      • GM = realized compound (historical) — <span class="g">ใช้กับ multi-period</span>
+    </div>
+  </div>
+
+  <div class="fcard">
+    <div class="ftitle"><span class="fnum">G5</span>Asset-Weighted Composite Return</div>
+    <div class="fmath">$$R_{composite} = \sum w_i \cdot R_i \quad \text{where } w_i = \frac{V_i}{\sum V_i}$$</div>
+    <div class="fnote">Weight = market value (beginning หรือ average) · GIPS-required for composite reporting</div>
+  </div>
+
+  <h3>Composite Requirements</h3>
+  <table>
+    <tr><th>Requirement</th><th>Detail</th></tr>
+    <tr><td>Inclusion</td><td>ทุก discretionary, fee-paying portfolio ใน strategy เดียวกัน · ห้าม cherry-pick</td></tr>
+    <tr><td>New portfolio</td><td>รวมเข้า composite <strong>เริ่มไตรมาสถัดไป</strong> หลัง full month under management</td></tr>
+    <tr><td>Terminated portfolio</td><td>ไว้ใน composite จนถึง <strong>final full period</strong> · ห้ามตัดออกย้อนหลัง</td></tr>
+    <tr><td>Min reporting</td><td><strong>5 years</strong> minimum · build up to 10 ปี</td></tr>
+    <tr><td>Dispersion</td><td>ต้อง present (high-low, std dev, IQR ฯลฯ) ถ้า composite มี &ge; 6 portfolios</td></tr>
+  </table>
+</section>
+
+<!-- ============ T3 ============ -->
+<section class="topic" id="t3">
+  <div class="topic-header">
+    <span class="topic-tag">T3</span>
+    <h2>เกณฑ์ตลาดทุนไทย (Thai Capital Market Regulations)</h2>
+  </div>
+
+  <h3>License Types</h3>
+  <table>
+    <tr><th>ใบอนุญาต</th><th>ทำได้</th><th>คุณสมบัติ</th></tr>
+    <tr><td><strong>IC (Investment Consultant)</strong></td><td>แนะนำการลงทุนทั่วไป</td><td>ผ่านการอบรม + สอบ</td></tr>
+    <tr><td><strong>IP (Investment Planner)</strong></td><td>วางแผน + แนะนำ + ทำ holistic plan</td><td>ผ่าน IC + financial planning exam</td></tr>
+    <tr><td><strong>AISA</strong></td><td>วิเคราะห์หลักทรัพย์</td><td>ผ่าน exam นี้ + Foundation</td></tr>
+    <tr><td><strong>Fund Manager</strong></td><td>บริหารกองทุน</td><td>คุณสมบัติเข้ม + license แยก</td></tr>
+  </table>
+
+  <h3>Offering Types</h3>
+  <table>
+    <tr><th>ประเภท</th><th>เกณฑ์</th><th>การ disclose</th></tr>
+    <tr><td><strong>Public Offering (PO)</strong></td><td>เสนอขายต่อประชาชนทั่วไป</td><td>ต้อง file แบบ 69-1 · prospectus เต็ม</td></tr>
+    <tr><td><strong>Private Placement (PP)</strong></td><td>&le; 50 ราย (HNW/II) ใน 12 เดือน</td><td>ลดข้อกำหนด disclosure</td></tr>
+    <tr><td><strong>II Offering</strong></td><td>เฉพาะ Institutional Investors</td><td>filing แบบสั้น</td></tr>
+    <tr><td><strong>HNW Offering</strong></td><td>High Net Worth (assets &gt; 30 ล้าน)</td><td>filing แบบสั้น</td></tr>
+  </table>
+
+  <h3>Special Instruments</h3>
+  <div class="box info">
+    <div class="lbl">IFF (Infrastructure Fund)</div>
+    ลงทุนในโครงสร้างพื้นฐาน · มี dividend policy (จ่าย &ge; 90% ของกำไร) · listed บน SET
+  </div>
+  <div class="box info">
+    <div class="lbl">REIT (Real Estate Investment Trust)</div>
+    ลงทุนในอสังหา · จ่าย dividend &ge; 90% · listed · ต่างจาก Property Fund (Property Fund = ถูก phase out แทนด้วย REIT)
+  </div>
+  <div class="box info">
+    <div class="lbl">Warrant</div>
+    สิทธิซื้อหุ้น exercise ราคาคงที่ · มี dilution effect ต่อ EPS · มี maturity
+  </div>
+  <div class="box info">
+    <div class="lbl">DR / DRx (Depositary Receipt)</div>
+    ใบสำคัญแสดงสิทธิในหลักทรัพย์ต่างประเทศ · เทรดได้ใน SET · DR = 1:1, DRx = ratio อื่น
+  </div>
+
+  <h3>Insider Trading &amp; Market Conduct</h3>
+  <ul>
+    <li><strong>Insider trading</strong> = ใช้ MNPI (Material Non-Public Information) → ผิดกฎหมาย</li>
+    <li><strong>Market manipulation</strong> = wash trade, painting tape, pump &amp; dump → ผิดกฎหมาย</li>
+    <li><strong>Front running</strong> = trade ก่อน client → conflict of interest</li>
+    <li><strong>Tipping</strong> = ส่ง MNPI ให้คนอื่นใช้เทรด → ผิดทั้งคนส่งและคนรับ</li>
+  </ul>
+</section>
+
+<!-- ============ T4 ============ -->
+<section class="topic" id="t4">
+  <div class="topic-header">
+    <span class="topic-tag">T4</span>
+    <h2>หลักการลงทุน (Investment Principles &amp; Portfolio Theory)</h2>
+  </div>
+
+  <h3>Single Asset Risk</h3>
+
+  <div class="fcard">
+    <div class="ftitle"><span class="fnum">P1</span>Variance &amp; SD <span class="fen">/ ความแปรปรวน · ส่วนเบี่ยงเบนมาตรฐาน</span></div>
+    <div class="fmath">$$\sigma^2 = \frac{\sum (R_i - \bar{R})^2}{n} \qquad \sigma = \sqrt{\sigma^2}$$</div>
+    <div class="fnote">
+      • <span class="t">Q37 lesson:</span> ใช้ % form ตลอด · σ ใส่ %, σ² in "% squared"<br>
+      • Sample vs Population: sample ใช้ $n-1$ ใน denominator
+    </div>
+  </div>
+
+  <div class="fcard">
+    <div class="ftitle"><span class="fnum">P2</span>Coefficient of Variation (CV)</div>
+    <div class="fmath">$$CV = \frac{\sigma}{\bar{R}}$$</div>
+    <div class="fnote">
+      • risk per unit of return · ต่ำกว่า = ดีกว่า<br>
+      <span class="t">Trap: ถ้า $\bar{R}$ ติดลบ → CV interpretation พัง</span>
+    </div>
+  </div>
+
+  <div class="fcard">
+    <div class="ftitle"><span class="fnum">P3</span>Covariance</div>
+    <div class="fmath">$$Cov_{1,2} = E[(R_1 - \bar{R_1})(R_2 - \bar{R_2})] = \rho_{1,2} \sigma_1 \sigma_2$$</div>
+    <div class="fnote">หน่วย = % × % (scale-dependent) · ไม่มีขอบเขต · +/− บอกทิศทาง</div>
+  </div>
+
+  <div class="fcard">
+    <div class="ftitle"><span class="fnum">P4</span>Correlation Coefficient (ρ)</div>
+    <div class="fmath">$$\rho_{1,2} = \frac{Cov_{1,2}}{\sigma_1 \sigma_2}$$</div>
+    <div class="fnote">
+      • ไม่มีหน่วย · range = $[-1, +1]$<br>
+      • ρ = 0 ไม่ได้แปลว่าอิสระ — แค่ไม่มี linear relationship<br>
+      <span class="g">ρ &lt; 1 → diversification benefit</span> · ρ = −1 → perfect hedge possible
+    </div>
+  </div>
+
+  <h3>Portfolio Risk</h3>
+
+  <div class="fcard">
+    <div class="ftitle"><span class="fnum">P5</span>2-Asset Portfolio Variance</div>
+    <div class="fmath">$$\sigma_p^2 = w_1^2 \sigma_1^2 + w_2^2 \sigma_2^2 + 2 w_1 w_2 \rho_{12} \sigma_1 \sigma_2$$</div>
+    <div class="fnote">
+      • <span class="t">อย่าลืม √ ตอนจบ</span> → $\sigma_p = \sqrt{\sigma_p^2}$<br>
+      • ถ้าโจทย์ให้ Cov → ใช้ $2 w_1 w_2 Cov_{12}$<br>
+      • ถ้า ρ = 1 → $\sigma_p = w_1 \sigma_1 + w_2 \sigma_2$ (max, ไม่มี benefit)<br>
+      • ถ้า ρ &lt; 1 → benefit
+    </div>
+  </div>
+
+  <div class="fcard">
+    <div class="ftitle"><span class="fnum">P6</span>3+ Asset Portfolio Variance (general)</div>
+    <div class="fmath">$$\sigma_p^2 = \sum_i \sum_j w_i w_j \sigma_i \sigma_j \rho_{ij}$$</div>
+    <div class="fnote">double sum · diagonal terms ($i=j$): $w_i^2 \sigma_i^2$ · off-diagonal: covariance pairs</div>
+  </div>
+
+  <div class="fcard">
+    <div class="ftitle"><span class="fnum">P7</span>Portfolio Expected Return</div>
+    <div class="fmath">$$E(R_p) = \sum w_i \cdot E(R_i)$$</div>
+    <div class="fnote">
+      <span class="k">Weighted average</span> ของ component expected returns<br>
+      • <strong>Linear</strong> (ต่างจาก variance ที่ไม่ linear)
+    </div>
+  </div>
+
+  <h3>CAPM &amp; Required Return</h3>
+
+  <div class="fcard">
+    <div class="ftitle"><span class="fnum">P8</span>CAPM <span class="fen">/ Capital Asset Pricing Model</span></div>
+    <div class="fmath">$$E(R_i) = R_f + \beta_i [E(R_m) - R_f]$$</div>
+    <div class="fnote">
+      • $R_f$ = risk-free rate · $\beta_i$ = systematic risk · $E(R_m) - R_f$ = Market Risk Premium<br>
+      <span class="t">⭐ Trap: ไม่ใช้ dividend yield ใน CAPM</span><br>
+      • β = 1 → market-like · β &gt; 1 → aggressive · β &lt; 1 → defensive
+    </div>
+  </div>
+
+  <div class="fcard">
+    <div class="ftitle"><span class="fnum">P9</span>Beta (β)</div>
+    <div class="fmath">$$\beta_i = \frac{Cov(R_i, R_m)}{\sigma_m^2} = \rho_{i,m} \cdot \frac{\sigma_i}{\sigma_m}$$</div>
+    <div class="fnote">วัด systematic risk · diversification ลด specific risk · ลด systematic ไม่ได้</div>
+  </div>
+
+  <h3>Risk Types</h3>
+  <table>
+    <tr><th>ประเภท</th><th>คือ</th><th>ลดได้ไหม</th></tr>
+    <tr><td><strong>Systematic Risk</strong></td><td>Market-wide risk (interest, recession, war)</td><td><span class="bad">ลดไม่ได้</span> · diversification ใช้ไม่ได้</td></tr>
+    <tr><td><strong>Unsystematic / Specific</strong></td><td>Company-specific (CEO scandal, product fail)</td><td><span class="ok">ลดได้</span> · diversify ออกได้</td></tr>
+    <tr><td><strong>Total Risk</strong></td><td>Systematic + Unsystematic</td><td>วัดด้วย σ (SD)</td></tr>
+  </table>
+
+  <h3>Capital Market Line (CML) vs Security Market Line (SML)</h3>
+  <table>
+    <tr><th></th><th>CML</th><th>SML</th></tr>
+    <tr><td>X-axis</td><td>σ (Total Risk)</td><td>β (Systematic Risk)</td></tr>
+    <tr><td>Y-axis</td><td>E(R)</td><td>E(R)</td></tr>
+    <tr><td>ใช้กับ</td><td>Efficient portfolios only</td><td>Individual securities + portfolios</td></tr>
+    <tr><td>Slope</td><td>Sharpe ratio of market</td><td>Market risk premium (Rm − Rf)</td></tr>
+  </table>
+
+  <h3>Performance Ratios</h3>
+
+  <div class="fcard">
+    <div class="ftitle"><span class="fnum">P10</span>Sharpe Ratio</div>
+    <div class="fmath">$$Sharpe = \frac{R_p - R_f}{\sigma_p}$$</div>
+    <div class="fnote">Excess return per <span class="k">total risk</span> · ใช้กับ portfolio ทั้ง diversified และไม่</div>
+  </div>
+
+  <div class="fcard">
+    <div class="ftitle"><span class="fnum">P11</span>Treynor Ratio</div>
+    <div class="fmath">$$Treynor = \frac{R_p - R_f}{\beta_p}$$</div>
+    <div class="fnote">Excess return per <span class="k">systematic risk</span> · ใช้กับ diversified portfolio (specific risk หมด)</div>
+  </div>
+
+  <div class="fcard">
+    <div class="ftitle"><span class="fnum">P12</span>Jensen's Alpha (α)</div>
+    <div class="fmath">$$\alpha_J = R_p - [R_f + \beta_p(R_m - R_f)]$$</div>
+    <div class="fnote">Actual − CAPM predicted · <span class="g">α &gt; 0 → outperform</span> · วัด manager skill</div>
+  </div>
+
+  <div class="fcard">
+    <div class="ftitle"><span class="fnum">P13</span>Sortino Ratio</div>
+    <div class="fmath">$$Sortino = \frac{R_p - R_f}{\sigma_{downside}}$$</div>
+    <div class="fnote">Sharpe variation · denominator = downside SD only (ใช้แค่ negative returns)</div>
+  </div>
+
+  <div class="fcard">
+    <div class="ftitle"><span class="fnum">P14</span>Information Ratio</div>
+    <div class="fmath">$$IR = \frac{R_p - R_{benchmark}}{\sigma(R_p - R_{benchmark})} = \frac{Active\ Return}{Tracking\ Error}$$</div>
+    <div class="fnote">Excess return vs benchmark per tracking error · วัด active management skill</div>
+  </div>
+
+  <div class="box memory">
+    <div class="lbl">Performance Ratio Summary (เลือก ratio ตามสถานการณ์)</div>
+    • <strong>Diversified portfolio</strong> → Treynor, Jensen<br>
+    • <strong>Non-diversified / single asset</strong> → Sharpe<br>
+    • <strong>Downside-focused investor</strong> → Sortino<br>
+    • <strong>Active manager vs benchmark</strong> → Information Ratio
+  </div>
+</section>
+
+<!-- ============ T5 ============ -->
+<section class="topic" id="t5">
+  <div class="topic-header">
+    <span class="topic-tag">T5</span>
+    <h2>การเงินธุรกิจ (Corporate Finance)</h2>
+  </div>
+
+  <h3>Cost of Capital</h3>
+
+  <div class="fcard">
+    <div class="ftitle"><span class="fnum">F1</span>WACC <span class="fen">/ Weighted Average Cost of Capital</span></div>
+    <div class="fmath">$$WACC = \frac{E}{V} r_e + \frac{D}{V} r_d (1-T) + \frac{P}{V} r_p$$</div>
+    <div class="fnote">
+      • $V = D + E + P$ (Total Capital)<br>
+      • Debt ใช้ <span class="k">after-tax</span> cost (tax shield)<br>
+      • Equity, Preferred ไม่มี tax adjustment<br>
+      • Weight = market value (ideally) ไม่ใช่ book value
+    </div>
+  </div>
+
+  <div class="fcard">
+    <div class="ftitle"><span class="fnum">F2</span>Cost of Equity (3 methods)</div>
+    <div class="fmath">
+      Method 1 (CAPM): $$r_e = R_f + \beta(R_m - R_f)$$<br>
+      Method 2 (DDM): $$r_e = \frac{D_1}{P_0} + g$$<br>
+      Method 3 (Build-up): $$r_e = R_f + ERP + \text{size premium} + \text{specific risk}$$
+    </div>
+    <div class="fnote">
+      • DDM method: ต้องมี stable dividend + g คงที่<br>
+      • Build-up: สำหรับ private company / illiquid<br>
+      • CAPM: most common · ต้องมี β (public stock)
+    </div>
+  </div>
+
+  <div class="fcard">
+    <div class="ftitle"><span class="fnum">F3</span>Cost of Debt (after-tax)</div>
+    <div class="fmath">$$r_d(1-T) = YTM \times (1 - Tax\ rate)$$</div>
+    <div class="fnote">ใช้ YTM ของ debt ที่ existing · ไม่ใช่ coupon rate · tax shield ลด effective cost</div>
+  </div>
+
+  <h3>Leverage</h3>
+
+  <div class="fcard">
+    <div class="ftitle"><span class="fnum">F4</span>DOL <span class="fen">/ Degree of Operating Leverage</span></div>
+    <div class="fmath">$$DOL = \frac{Q(P-V)}{Q(P-V) - F} = \frac{Contribution\ Margin}{EBIT} = \frac{\%\Delta EBIT}{\%\Delta Sales}$$</div>
+    <div class="fnote">
+      • Q = quantity · P = price · V = variable cost/unit · F = fixed cost<br>
+      • วัด sensitivity ของ EBIT ต่อ Sales<br>
+      • DOL สูง = fixed cost สูง = ปังก็ปังมาก เจ๊งก็เจ๊งหนัก
+    </div>
+  </div>
+
+  <div class="fcard">
+    <div class="ftitle"><span class="fnum">F5</span>DFL <span class="fen">/ Degree of Financial Leverage</span></div>
+    <div class="fmath">$$DFL = \frac{EBIT}{EBIT - Interest} = \frac{\%\Delta EPS}{\%\Delta EBIT}$$</div>
+    <div class="fnote">วัด sensitivity ของ EPS ต่อ EBIT · DFL สูง = หนี้สูง = leverage งบมาก</div>
+  </div>
+
+  <div class="fcard">
+    <div class="ftitle"><span class="fnum">F6</span>DCL (Total Leverage)</div>
+    <div class="fmath">$$DCL = DOL \times DFL = \frac{\%\Delta EPS}{\%\Delta Sales}$$</div>
+    <div class="fnote">Combined effect · วัด total sensitivity ของ EPS ต่อ Sales</div>
+  </div>
+
+  <h3>Capital Budgeting</h3>
+
+  <div class="fcard">
+    <div class="ftitle"><span class="fnum">F7</span>NPV <span class="fen">/ Net Present Value</span></div>
+    <div class="fmath">$$NPV = \sum_{t=0}^{n} \frac{CF_t}{(1+r)^t} = -Initial\ Investment + \sum_{t=1}^{n} \frac{CF_t}{(1+r)^t}$$</div>
+    <div class="fnote">
+      • <span class="g">NPV &gt; 0 → accept</span> · NPV &lt; 0 → reject<br>
+      • Mutually exclusive projects → เลือก NPV สูงสุด
+    </div>
+  </div>
+
+  <div class="fcard">
+    <div class="ftitle"><span class="fnum">F8</span>IRR <span class="fen">/ Internal Rate of Return</span></div>
+    <div class="fmath">$$0 = \sum_{t=0}^{n} \frac{CF_t}{(1 + IRR)^t}$$</div>
+    <div class="fnote">
+      • <span class="g">IRR &gt; required return → accept</span><br>
+      <span class="t">Trap: NPV และ IRR อาจให้ ranking ต่างกัน — เชื่อ NPV</span> (เพราะ IRR assumes reinvest ที่ IRR rate ไม่จริง)
+    </div>
+  </div>
+
+  <div class="fcard">
+    <div class="ftitle"><span class="fnum">F9</span>Payback Period</div>
+    <div class="fmath">$$Payback = \frac{Initial\ Investment}{Annual\ CF}$$</div>
+    <div class="fnote">
+      • วัดเวลาคืนทุน (ไม่นับ time value of money)<br>
+      • Discounted Payback = นับ TVM
+    </div>
+  </div>
+
+  <div class="fcard">
+    <div class="ftitle"><span class="fnum">F10</span>Profitability Index (PI)</div>
+    <div class="fmath">$$PI = \frac{PV\ of\ future\ CFs}{Initial\ Investment} = 1 + \frac{NPV}{Initial\ Investment}$$</div>
+    <div class="fnote">
+      • <span class="g">PI &gt; 1 → accept</span> · PI &lt; 1 → reject<br>
+      • ใช้กับ capital rationing (จำกัดงบ) — เลือก PI สูงสุด
+    </div>
+  </div>
+
+  <h3>Working Capital &amp; Cash Management</h3>
+
+  <div class="fcard">
+    <div class="ftitle"><span class="fnum">F11</span>EOQ <span class="fen">/ Economic Order Quantity</span></div>
+    <div class="fmath">$$EOQ = \sqrt{\frac{2 D S}{H}}$$</div>
+    <div class="fnote">D = annual demand · S = ordering cost/order · H = holding cost/unit/year · minimize total cost</div>
+  </div>
+
+  <div class="fcard">
+    <div class="ftitle"><span class="fnum">F12</span>Cash Conversion Cycle (CCC)</div>
+    <div class="fmath">$$CCC = DIO + DSO - DPO$$</div>
+    <div class="fnote">
+      • DIO = Days Inventory Outstanding<br>
+      • DSO = Days Sales Outstanding (collect AR)<br>
+      • DPO = Days Payable Outstanding (delay AP)<br>
+      • <span class="g">CCC ต่ำ = ดี</span> · cash หมุนเวียนเร็ว
+    </div>
+  </div>
+
+  <div class="fcard">
+    <div class="ftitle"><span class="fnum">F13</span>Breakeven Analysis</div>
+    <div class="fmath">$$Q_{BE} = \frac{Fixed\ Cost}{Price - Variable\ Cost} = \frac{F}{P - V}$$</div>
+    <div class="fnote">หน่วยที่ขายแล้วเสมอตัว (EBIT = 0) · เพิ่ม "+Interest" ใน F สำหรับ leveraged breakeven</div>
+  </div>
+</section>
+
+<!-- ============ T6 ============ -->
+<section class="topic" id="t6">
+  <div class="topic-header">
+    <span class="topic-tag">T6</span>
+    <h2>การวิเคราะห์งบการเงิน (Financial Statement Analysis)</h2>
+  </div>
+
+  <h3>Accounting Equation &amp; Debit/Credit</h3>
+  <div class="box memory">
+    <div class="lbl">Master Equation</div>
+    <div style="text-align: center; font-size: 18px; padding: 10px;">
+      <strong>Assets = Liabilities + Equity</strong><br>
+      <span style="font-size: 13px;">(BS ฝั่งซ้าย = ฝั่งขวา · ต้องสมดุลตลอด)</span>
+    </div>
+  </div>
+
+  <table>
+    <tr><th>ประเภท</th><th>เพิ่ม</th><th>ลด</th><th>ตัวอย่าง</th></tr>
+    <tr><td><strong>สินทรัพย์ (A)</strong></td><td class="ok">Debit ▲</td><td class="bad">Credit ▼</td><td>เงินสด · ลูกหนี้ · PPE</td></tr>
+    <tr><td><strong>หนี้สิน (L)</strong></td><td class="ok">Credit ▲</td><td class="bad">Debit ▼</td><td>เจ้าหนี้ · เงินกู้ · หุ้นกู้</td></tr>
+    <tr><td><strong>ทุน (E)</strong></td><td class="ok">Credit ▲</td><td class="bad">Debit ▼</td><td>ทุนจดทะเบียน · RE</td></tr>
+    <tr><td><strong>รายได้ (R)</strong></td><td class="ok">Credit ▲</td><td class="bad">Debit ▼</td><td>ขาย · ดอกเบี้ยรับ</td></tr>
+    <tr><td><strong>ค่าใช้จ่าย (X)</strong></td><td class="ok">Debit ▲</td><td class="bad">Credit ▼</td><td>COGS · เงินเดือน · ค่าเช่า</td></tr>
+  </table>
+
+  <div class="box memory">
+    <div class="lbl">Memory Aid</div>
+    "<span class="g">A &amp; E → Debit เพิ่ม</span>" (Asset + Expense) · "<span class="info">L · OE · R → Credit เพิ่ม</span>" (Liability + Owner's Equity + Revenue)<br>
+    Logic: บัญชีฝั่ง <strong>"กิจการรวยขึ้น"</strong> (equity/revenue) อยู่ฝั่ง credit
+  </div>
+
+  <h3>3 Financial Statements</h3>
+  <table>
+    <tr><th>งบ</th><th>คือ</th><th>เวลา</th></tr>
+    <tr><td><strong>BS (Balance Sheet)</strong></td><td>ฐานะการเงิน ณ จุดเวลาหนึ่ง</td><td>Snapshot (point-in-time)</td></tr>
+    <tr><td><strong>IS (Income Statement)</strong></td><td>ผลการดำเนินงานในช่วงเวลา</td><td>Period (e.g., yearly, quarterly)</td></tr>
+    <tr><td><strong>CFS (Cash Flow Statement)</strong></td><td>กระแสเงินสดในช่วงเวลา</td><td>Period · 3 categories: O/I/F</td></tr>
+  </table>
+
+  <h3>Cash Flow Categorization (TFRS vs US GAAP)</h3>
+  <table>
+    <tr><th>รายการ</th><th>TFRS/IFRS (AISA)</th><th>US GAAP</th></tr>
+    <tr><td>ดอกเบี้ยจ่าย</td><td><span class="ok">CFO หรือ CFF</span> (policy)</td><td>CFO only</td></tr>
+    <tr><td>ดอกเบี้ยรับ</td><td><span class="ok">CFO หรือ CFI</span> (policy)</td><td>CFO only</td></tr>
+    <tr><td>เงินปันผลจ่าย</td><td><span class="ok">CFO หรือ CFF</span> (policy)</td><td>CFF only</td></tr>
+    <tr><td>เงินปันผลรับ</td><td><span class="ok">CFO หรือ CFI</span> (policy)</td><td>CFO only</td></tr>
+    <tr><td>ภาษีจ่าย</td><td>CFO (default)</td><td>CFO</td></tr>
+  </table>
+
+  <div class="box trap">
+    <div class="lbl">AISA Cash Flow Rule</div>
+    AISA = TFRS · ถ้าคำตอบมี "<strong>Operating หรือ Financing ตามนโยบาย</strong>" → เลือก<br>
+    Direction: Inflow = ได้มา (+) · Outflow = ใช้ไป (−) · <span class="t">ระวัง direction reversal trap</span>
+  </div>
+
+  <h3>Financial Asset Classification (TFRS 9)</h3>
+  <table>
+    <tr><th>ประเภท</th><th>เกณฑ์</th><th>การวัดมูลค่า</th><th>Gain/Loss</th></tr>
+    <tr><td><span class="ok"><strong>Amortized Cost (AC)</strong></span></td><td>SPPI ผ่าน + Hold to collect</td><td>Amortized cost</td><td>ไม่ revalue · interest → P&amp;L</td></tr>
+    <tr><td><span class="info"><strong>FVOCI</strong></span></td><td>Debt: SPPI + collect &amp; sell · Equity: irrevocable election</td><td>Fair value</td><td>Unrealized → <strong>OCI</strong></td></tr>
+    <tr><td><span class="bad"><strong>FVPL</strong></span></td><td>Default · "เพื่อค้า" (HFT)</td><td>Fair value</td><td>Unrealized → <strong>P&amp;L</strong></td></tr>
+  </table>
+
+  <div class="box trap">
+    <div class="lbl">Trigger Keywords</div>
+    "เพื่อค้า" / "held for trading" → <span class="bad">FVPL → P&amp;L</span><br>
+    "ลงทุนระยะยาว" + FVOCI election → <span class="info">FVOCI → OCI</span><br>
+    "ถือถึงครบกำหนด" + SPPI → <span class="ok">Amortized Cost</span> · ไม่มี OCI · premium/discount via interest income
+  </div>
+
+  <h3>OCI Items (สำคัญ — รู้ครบ 5 ตัว)</h3>
+  <ol>
+    <li><strong>Revaluation Surplus</strong> (PPE upward revaluation under revaluation model)</li>
+    <li><strong>FVOCI gain/loss</strong> (debt + equity election)</li>
+    <li><strong>Foreign Currency Translation</strong> ของ foreign subsidiary</li>
+    <li><strong>Defined Benefit Plan</strong> remeasurement (actuarial gain/loss)</li>
+    <li><strong>Cash Flow Hedge</strong> effective portion</li>
+  </ol>
+
+  <h3>Inventory Methods</h3>
+  <table>
+    <tr><th>วิธี</th><th>ตอน Inflation</th><th>COGS</th><th>End Inventory</th><th>NI</th><th>Tax</th></tr>
+    <tr><td>FIFO (First-in First-out)</td><td>ราคาขึ้น</td><td>ต่ำ (ของเก่า)</td><td>สูง (ของใหม่)</td><td>สูง</td><td>สูง</td></tr>
+    <tr><td>Weighted Average</td><td>ราคาขึ้น</td><td>กลาง</td><td>กลาง</td><td>กลาง</td><td>กลาง</td></tr>
+    <tr><td>LIFO (TFRS ห้ามใช้)</td><td>ราคาขึ้น</td><td>สูง (ของใหม่)</td><td>ต่ำ (ของเก่า)</td><td>ต่ำ</td><td>ต่ำ</td></tr>
+    <tr><td>Specific Identification</td><td>—</td><td>ของชิ้นที่ขายจริง</td><td>ของชิ้นที่เหลือจริง</td><td>—</td><td>—</td></tr>
+  </table>
+
+  <div class="box info">
+    <div class="lbl">TFRS ห้าม LIFO</div>
+    Thai/IFRS ใช้แค่ FIFO, Weighted Avg, Specific ID · LIFO ใช้เฉพาะ US GAAP
+  </div>
+
+  <h3>Depreciation Methods</h3>
+  <table>
+    <tr><th>วิธี</th><th>สูตร</th><th>Pattern</th></tr>
+    <tr><td>Straight-line (SL)</td><td>$(Cost - Salvage) / Useful\ Life$</td><td>เท่ากันทุกปี</td></tr>
+    <tr><td>Double Declining Balance (DDB)</td><td>$2 \times \frac{1}{Life} \times BV$</td><td>หนักหน้า · ค่อยๆ ลด · ไม่หัก salvage ตอนคำนวณ แต่หยุดเมื่อ BV = salvage</td></tr>
+    <tr><td>Units of Production</td><td>$(Cost - Salvage) \times \frac{Units\ Used}{Total\ Units}$</td><td>ตาม usage</td></tr>
+    <tr><td>Sum-of-Years' Digits (SYD)</td><td>$(Cost - Salvage) \times \frac{Remaining\ Life}{Sum\ of\ Years}$</td><td>หนักหน้า · ลดเร็ว</td></tr>
+  </table>
+
+  <h3>Lease Accounting (IFRS 16)</h3>
+  <div class="box info">
+    <div class="lbl">ผู้เช่า (Lessee) ทำอะไรตอน initial</div>
+    1. รับรู้ <strong>Right-of-Use (ROU) Asset</strong> = PV of lease payments (+initial direct costs, − lease incentives)<br>
+    2. รับรู้ <strong>Lease Liability</strong> = PV of remaining lease payments<br>
+    3. หลังจากนั้น: amortize ROU + accrue interest บน Lease Liability
+  </div>
+
+  <h3>Revaluation Model vs Cost Model (PPE)</h3>
+  <table>
+    <tr><th>Model</th><th>การวัดหลัง initial</th><th>Upward</th><th>Downward</th></tr>
+    <tr><td>Cost Model</td><td>Cost − Accumulated Depreciation</td><td>—</td><td>Impairment → P&amp;L</td></tr>
+    <tr><td>Revaluation Model</td><td>Fair Value (revalue regularly)</td><td>→ <strong>OCI</strong> (Revaluation Surplus)</td><td>→ P&amp;L (เว้นแต่กลับ upward เก่า)</td></tr>
+  </table>
+
+  <h3>All Financial Ratios (4 Families)</h3>
+
+  <h4>Liquidity (สภาพคล่อง)</h4>
+  <div class="fcard">
+    <div class="fmath">$$Current\ Ratio = \frac{Current\ Assets}{Current\ Liabilities}$$<br>$$Quick\ Ratio = \frac{CA - Inventory - Prepaid}{CL}$$<br>$$Cash\ Ratio = \frac{Cash + Marketable\ Securities}{CL}$$</div>
+    <div class="fnote">เรียงเข้มงวด: Cash &lt; Quick &lt; Current · Inventory เป็น CA แต่ตัดออกใน Quick</div>
+  </div>
+
+  <h4>Leverage (โครงสร้างทุน)</h4>
+  <div class="fcard">
+    <div class="fmath">$$D/A = \frac{Total\ Debt}{Total\ Assets} \qquad D/E = \frac{Total\ Debt}{Equity}$$<br>$$EM = \frac{TA}{Equity} = 1 + \frac{D}{E}$$<br>$$TIE = \frac{EBIT}{Interest\ Expense}$$</div>
+    <div class="fnote">
+      <span class="t">⭐ Top Trap: EM ≠ D/E</span> · EM = 1 + D/E เมื่อ D/E ใช้ Total Debt<br>
+      TIE ใช้ EBIT ไม่ใช่ NI · สูง = safe
+    </div>
+  </div>
+
+  <h4>Profitability (ความสามารถทำกำไร)</h4>
+  <div class="fcard">
+    <div class="fmath">$$Gross\ Margin = \frac{Gross\ Profit}{Sales} \qquad Operating\ Margin = \frac{EBIT}{Sales}$$<br>$$Net\ Margin = \frac{NI}{Sales} \qquad ROA = \frac{NI}{TA}$$<br>$$ROE = \frac{NI}{Equity}$$</div>
+  </div>
+
+  <div class="fcard">
+    <div class="ftitle"><span class="fnum">DuP</span>DuPont Decomposition (ROE)</div>
+    <div class="fmath">$$ROE = NPM \times AT \times EM \quad \text{(3-component)}$$<br>$$ROE = ROA \times EM \quad \text{(2-component)}$$<br>$$ROE = NPM \times Equity\ Turnover \quad \text{(variant)}$$</div>
+    <div class="fnote">
+      • ทุก form valid mathematically (algebra ตัด terms ลงตัว)<br>
+      • AISA ขอ 3-comp เป็น default · 2-comp เมื่อโจทย์ให้ ROA ตรงๆ
+    </div>
+  </div>
+
+  <h4>Efficiency (ประสิทธิภาพ)</h4>
+  <div class="fcard">
+    <div class="fmath">$$Asset\ Turnover = \frac{Sales}{TA} \qquad Inventory\ Turnover = \frac{COGS}{Avg\ Inventory}$$<br>$$Receivables\ Turnover = \frac{Sales}{Avg\ AR} \qquad Payables\ Turnover = \frac{COGS}{Avg\ AP}$$<br>$$DIO = \frac{365}{IT} \qquad DSO = \frac{365}{RT} \qquad DPO = \frac{365}{PT}$$</div>
+    <div class="fnote">DIO + DSO − DPO = Cash Conversion Cycle</div>
+  </div>
+
+  <h3>Common-Size Analysis</h3>
+  <table>
+    <tr><th>ประเภท</th><th>Base</th><th>ตัวอย่าง</th></tr>
+    <tr><td>Vertical (BS)</td><td>Total Assets</td><td>Inventory / TA = 15%</td></tr>
+    <tr><td>Vertical (IS)</td><td>Revenue</td><td>COGS / Revenue = 60%</td></tr>
+    <tr><td>Horizontal</td><td>Base year value</td><td>2566 vs 2565 → % change</td></tr>
+  </table>
+
+  <h3>Consolidated Statements (บริษัทย่อย/ร่วม)</h3>
+  <table>
+    <tr><th>% Ownership</th><th>วิธี</th><th>Treatment</th></tr>
+    <tr><td>&gt; 50% (Control)</td><td>Consolidation (รวมงบ)</td><td>รวมทุกบรรทัด · มี NCI (Non-controlling Interest)</td></tr>
+    <tr><td>20-50% (Significant Influence)</td><td>Equity Method</td><td>1 บรรทัด: Investment in Associate · ปรับ share of NI</td></tr>
+    <tr><td>&lt; 20% (No influence)</td><td>FVPL/FVOCI</td><td>Financial asset · ตาม classification</td></tr>
+  </table>
+</section>
+
+<!-- ============ T7 ============ -->
+<section class="topic" id="t7">
+  <div class="topic-header">
+    <span class="topic-tag">T7</span>
+    <h2>ตราสารทุน (Equity Securities)</h2>
+  </div>
+
+  <h3>Stock Classification</h3>
+  <table>
+    <tr><th>ประเภท</th><th>ลักษณะ</th></tr>
+    <tr><td><strong>Blue Chip</strong></td><td>บริษัทใหญ่ ดี ปันผลสม่ำเสมอ (เช่น SET50)</td></tr>
+    <tr><td><strong>Growth Stock</strong></td><td>กำลังเติบโตเร็ว · มัก reinvest, ปันผลต่ำ</td></tr>
+    <tr><td><strong>Income Stock</strong></td><td>ปันผลสูงคงที่ · บริษัท mature</td></tr>
+    <tr><td><strong>Value Stock</strong></td><td>P/E ต่ำ · ราคาต่ำกว่ามูลค่าจริง</td></tr>
+    <tr><td><strong>Defensive Stock</strong></td><td>ทนเศรษฐกิจ (อาหาร, ยา, สาธารณูปโภค) · β ต่ำ</td></tr>
+    <tr><td><strong>Cyclical Stock</strong></td><td>ตามวัฏจักรเศรษฐกิจ (รถ, อสังหา) · β สูง</td></tr>
+    <tr><td><strong>Penny Stock</strong></td><td>ราคาต่ำมาก · ผันผวนสูง · risk สูง</td></tr>
+    <tr><td><strong>Small/Mid/Large Cap</strong></td><td>แบ่งตาม market cap · Thai: Top 50 = Large, 51-100 = Mid, &gt;100 = Small</td></tr>
+  </table>
+
+  <h3>Valuation — DDM Family</h3>
+
+  <div class="fcard">
+    <div class="ftitle"><span class="fnum">E1</span>Gordon Growth Model (Constant DDM)</div>
+    <div class="fmath">$$P_0 = \frac{D_1}{r - g}$$</div>
+    <div class="fnote">
+      $D_1 = D_0(1+g)$ · ใช้เมื่อ g คงที่ตลอด · <span class="t">ต้อง g &lt; r</span><br>
+      บริษัท mature, dividend สม่ำเสมอ
+    </div>
+  </div>
+
+  <div class="fcard">
+    <div class="ftitle"><span class="fnum">E2</span>2-Stage DDM</div>
+    <div class="fmath">$$P_0 = \sum_{t=1}^{n} \frac{D_t}{(1+r)^t} + \frac{P_n}{(1+r)^n}$$<br>$$P_n = \frac{D_{n+1}}{r - g_2}$$</div>
+    <div class="fnote">
+      <span class="t">⭐ Terminal value ใช้ $k - g$ ไม่ใช่ $k + g$</span><br>
+      High growth (g₁) n ปีแรก → stable growth (g₂) ตลอดไป
+    </div>
+  </div>
+
+  <div class="fcard">
+    <div class="ftitle"><span class="fnum">E3</span>H-Model</div>
+    <div class="fmath">$$P_0 = \frac{D_0 (1+g_L) + D_0 \cdot H \cdot (g_S - g_L)}{r - g_L}$$</div>
+    <div class="fnote">
+      • $g_S$ = short-term growth · $g_L$ = long-term growth · H = half of high-growth period<br>
+      • Growth ลด <strong>linearly</strong> จาก $g_S$ → $g_L$ ตลอด 2H ปี (ไม่ใช่ step change)
+    </div>
+  </div>
+
+  <h3>FCFE / FCFF</h3>
+
+  <div class="fcard">
+    <div class="ftitle"><span class="fnum">E4</span>FCFE Gordon</div>
+    <div class="fmath">$$P_0 = \frac{FCFE_1}{r_e - g}$$</div>
+    <div class="fnote">discount rate = <span class="k">cost of equity</span> ($r_e$) · ได้ <span class="k">equity value</span> ตรงๆ</div>
+  </div>
+
+  <div class="fcard">
+    <div class="ftitle"><span class="fnum">E5</span>FCFF Gordon</div>
+    <div class="fmath">$$Firm\ Value = \frac{FCFF_1}{WACC - g}$$<br>$$Equity\ Value = Firm\ Value - Debt\ Value$$</div>
+    <div class="fnote">
+      <span class="t">⭐ Top trap: WACC ไม่ใช่ ke</span><br>
+      ได้ firm value · ลบหนี้ → equity
+    </div>
+  </div>
+
+  <div class="fcard">
+    <div class="ftitle"><span class="fnum">E6</span>FCFE จาก NI</div>
+    <div class="fmath">$$FCFE = NI + NCC - FCInv - WCInv + Net\ Borrowing$$</div>
+    <div class="fnote">
+      • NCC = Non-Cash Charges (Depreciation, Amortization)<br>
+      • FCInv = Fixed Capital Investment (CapEx)<br>
+      • WCInv = Change in Working Capital<br>
+      • Net Borrowing = New Debt − Debt Repaid
+    </div>
+  </div>
+
+  <div class="fcard">
+    <div class="ftitle"><span class="fnum">E7</span>FCFF จาก NI</div>
+    <div class="fmath">$$FCFF = NI + NCC + Int(1-T) - FCInv - WCInv$$<br>$$FCFF = EBIT(1-T) + Dep - FCInv - WCInv$$<br>$$FCFF = FCFE + Int(1-T) - Net\ Borrowing$$</div>
+    <div class="fnote">
+      • บวกกลับ <span class="k">Int(1−T)</span> เพราะ FCFF = ก่อนจ่ายเจ้าหนี้<br>
+      • ไม่มี Net Borrowing (debt-level neutral)
+    </div>
+  </div>
+
+  <h3>Relative Valuation (Multiples)</h3>
+
+  <div class="fcard">
+    <div class="ftitle"><span class="fnum">E8</span>Justified Leading P/E</div>
+    <div class="fmath">$$\frac{P_0}{E_1} = \frac{Payout}{r - g}$$</div>
+    <div class="fnote">$g = ROE \times b$ · b = retention = 1 − payout · Leading = E ปีหน้า</div>
+  </div>
+
+  <div class="fcard">
+    <div class="ftitle"><span class="fnum">E9</span>Justified Trailing P/E</div>
+    <div class="fmath">$$\frac{P_0}{E_0} = \frac{Payout \times (1+g)}{r - g}$$</div>
+    <div class="fnote">Trailing = E ล่าสุด → ต้อง × (1+g) ใน numerator</div>
+  </div>
+
+  <div class="fcard">
+    <div class="ftitle"><span class="fnum">E10</span>P/B (Price-to-Book)</div>
+    <div class="fmath">$$\frac{P_0}{B_0} = \frac{ROE - g}{r - g}$$</div>
+    <div class="fnote">Justified P/B · BV ต้อง positive (ใช้ไม่ได้ถ้า equity negative)</div>
+  </div>
+
+  <div class="fcard">
+    <div class="ftitle"><span class="fnum">E11</span>P/S (Price-to-Sales)</div>
+    <div class="fmath">$$\frac{P_0}{S_0} = \frac{NPM \times Payout \times (1+g)}{r - g}$$</div>
+    <div class="fnote">ใช้กับ cyclical / loss-making companies (sales ยังบวก แม้ NI ลบ)</div>
+  </div>
+
+  <div class="fcard">
+    <div class="ftitle"><span class="fnum">E12</span>EV/EBITDA</div>
+    <div class="fmath">$$EV = Market\ Cap + Debt - Cash$$</div>
+    <div class="fnote">
+      • EBITDA = Earnings Before Interest, Tax, Depreciation, Amortization<br>
+      • ใช้เปรียบเทียบ capital structure ต่างกัน (ไม่กระทบจาก leverage)
+    </div>
+  </div>
+
+  <h3>Growth &amp; Other</h3>
+
+  <div class="fcard">
+    <div class="ftitle"><span class="fnum">E13</span>Sustainable Growth Rate</div>
+    <div class="fmath">$$g = ROE \times b$$</div>
+    <div class="fnote">
+      <span class="t">⭐ b = retention = 1 − payout</span> · ไม่ใช่ payout<br>
+      Memory: "<strong>b = bury / เก็บไว้</strong>"
+    </div>
+  </div>
+
+  <div class="fcard">
+    <div class="ftitle"><span class="fnum">E14</span>EVA <span class="fen">/ Economic Value Added</span></div>
+    <div class="fmath">$$EVA = NOPAT - (WACC \times Invested\ Capital)$$</div>
+    <div class="fnote">
+      NOPAT = EBIT × (1 − T) · วัดมูลค่าที่สร้างเหนือต้นทุนทุน<br>
+      EVA &gt; 0 = สร้างมูลค่า · EVA &lt; 0 = ทำลายมูลค่า
+    </div>
+  </div>
+
+  <div class="fcard">
+    <div class="ftitle"><span class="fnum">E15</span>MVA <span class="fen">/ Market Value Added</span></div>
+    <div class="fmath">$$MVA = Market\ Value\ of\ Firm - Invested\ Capital$$</div>
+    <div class="fnote">วัดมูลค่าตลาดส่วนเพิ่มเหนือทุนที่ลงไป</div>
+  </div>
+
+  <div class="fcard">
+    <div class="ftitle"><span class="fnum">E16</span>Holding Period Return + Annualized</div>
+    <div class="fmath">$$HPR = \frac{P_1 - P_0 + D}{P_0}$$<br>$$Annualized = (1 + HPR)^{365/days} - 1$$</div>
+  </div>
+
+  <h3>Industry Life Cycle (5 stages)</h3>
+  <table>
+    <tr><th>Stage</th><th>ลักษณะ</th><th>กำไร · Dividend</th></tr>
+    <tr><td><strong>1. Pioneering (Start-up)</strong></td><td>ผู้ผลิตน้อย · ตลาดเล็ก · risk สูง</td><td>กำไรน้อย / ขาดทุน · ไม่ปันผล</td></tr>
+    <tr><td><strong>2. Growth</strong></td><td>ยอดขายโต · มี competitor เข้า · margin บีบ</td><td>กำไรโต · ปันผลน้อย (reinvest)</td></tr>
+    <tr><td><strong>3. Mature</strong></td><td>โตช้า · stable</td><td>กำไรเสถียร · ปันผลขึ้น</td></tr>
+    <tr><td><strong>4. Stabilization</strong></td><td>flat growth · price war</td><td>ปันผลสูง</td></tr>
+    <tr><td><strong>5. Decline</strong></td><td>ยอดขายลด</td><td>กำไรลด · ปันผลลดหรือหยุด</td></tr>
+  </table>
+
+  <h3>Herfindahl-Hirschman Index (HHI)</h3>
+  <div class="fcard">
+    <div class="fmath">$$HHI = \sum (Market\ Share_i)^2$$</div>
+    <div class="fnote">
+      วัด concentration ของ industry<br>
+      • HHI สูง = concentrated (น้อยรายครอง)<br>
+      • HHI ต่ำ = competitive (กระจาย)<br>
+      • ใช้ใน competitor analysis · merger antitrust review
+    </div>
+  </div>
+
+  <h3>Top-Down vs Bottom-Up Analysis</h3>
+  <table>
+    <tr><th>Approach</th><th>ลำดับ</th></tr>
+    <tr><td><strong>Top-Down</strong></td><td>Macro → Industry → Company</td></tr>
+    <tr><td><strong>Bottom-Up</strong></td><td>Company → Industry → Macro</td></tr>
+  </table>
+
+  <div class="box trap">
+    <div class="lbl">การวิเคราะห์ที่ <strong>ไม่ใช่</strong> top-down</div>
+    Technical Analysis = แยกออกจาก fundamental analysis (top-down/bottom-up เป็น fundamental approaches)
+  </div>
+</section>
+
+<!-- ============ T8 ============ -->
+<section class="topic" id="t8">
+  <div class="topic-header">
+    <span class="topic-tag">T8</span>
+    <h2>ตราสารหนี้ (Fixed Income / Bonds)</h2>
+  </div>
+
+  <h3>Bond Basics</h3>
+  <table>
+    <tr><th>Term</th><th>คือ</th></tr>
+    <tr><td>Par / Face Value</td><td>มูลค่าที่ต้องชำระคืน (มัก = 1,000 บาท)</td></tr>
+    <tr><td>Coupon Rate</td><td>อัตราดอกเบี้ยที่จ่ายต่อปี (% of par)</td></tr>
+    <tr><td>Maturity</td><td>วันครบกำหนด</td></tr>
+    <tr><td>YTM</td><td>Yield to Maturity (discount rate ที่ทำให้ PV = price)</td></tr>
+  </table>
+
+  <h3>Bond Pricing &amp; Yields</h3>
+
+  <div class="fcard">
+    <div class="ftitle"><span class="fnum">B1</span>Bond Price (PV)</div>
+    <div class="fmath">$$P = \sum_{t=1}^{n} \frac{C}{(1+y)^t} + \frac{F}{(1+y)^n}$$</div>
+    <div class="fnote">
+      C = coupon · F = face value · y = YTM/period · n = number of periods<br>
+      Semi-annual: ใช้ C/2, y/2, n × 2
+    </div>
+  </div>
+
+  <div class="fcard">
+    <div class="ftitle"><span class="fnum">B2</span>Price ↔ Yield Relationship</div>
+    <div class="fmath">$$\text{Price} \uparrow \iff \text{Yield} \downarrow \quad (\text{inverse relationship})$$</div>
+    <table>
+      <tr><th>Coupon vs YTM</th><th>Price vs Par</th><th>ประเภท</th></tr>
+      <tr><td>Coupon &gt; YTM</td><td>Price &gt; Par</td><td>Premium</td></tr>
+      <tr><td>Coupon = YTM</td><td>Price = Par</td><td>At par</td></tr>
+      <tr><td>Coupon &lt; YTM</td><td>Price &lt; Par</td><td>Discount</td></tr>
+    </table>
+  </div>
+
+  <div class="fcard">
+    <div class="ftitle"><span class="fnum">B3</span>Current Yield</div>
+    <div class="fmath">$$Current\ Yield = \frac{Annual\ Coupon}{Current\ Price}$$</div>
+    <div class="fnote">simple yield · ไม่รวม capital gain/loss</div>
+  </div>
+
+  <h3>Duration &amp; Convexity</h3>
+
+  <div class="fcard">
+    <div class="ftitle"><span class="fnum">B4</span>Macaulay Duration</div>
+    <div class="fmath">$$Mac\ D = \sum \frac{t \cdot CF_t / (1+y)^t}{P}$$</div>
+    <div class="fnote">
+      weighted average time to receive cash flows (ปี)<br>
+      • Zero-coupon bond: Mac D = maturity<br>
+      • Coupon bond: Mac D &lt; maturity
+    </div>
+  </div>
+
+  <div class="fcard">
+    <div class="ftitle"><span class="fnum">B5</span>Modified Duration</div>
+    <div class="fmath">$$Mod\ D = \frac{Mac\ D}{1 + y}$$</div>
+    <div class="fnote">
+      วัด price sensitivity ต่อ yield<br>
+      • $\%\Delta P \approx -Mod\ D \times \Delta y$
+    </div>
+  </div>
+
+  <div class="fcard">
+    <div class="ftitle"><span class="fnum">B6</span>Effective Duration</div>
+    <div class="fmath">$$Eff\ D = \frac{P_{-} - P_{+}}{2 \times P_0 \times \Delta y}$$</div>
+    <div class="fnote">
+      • $P_-$ = price ที่ yield ลด · $P_+$ = price ที่ yield เพิ่ม<br>
+      • ใช้กับ <strong>callable / putable / option-embedded bonds</strong>
+    </div>
+  </div>
+
+  <div class="fcard">
+    <div class="ftitle"><span class="fnum">B7</span>Convexity Adjustment</div>
+    <div class="fmath">$$\%\Delta P \approx -Mod\ D \times \Delta y + \frac{1}{2} \times Convexity \times (\Delta y)^2$$</div>
+    <div class="fnote">
+      • Duration เป็น linear approximation · Convexity แก้ curvature<br>
+      • <span class="g">Convexity เพิ่ม upside · ลด downside</span> = นักลงทุนชอบ
+    </div>
+  </div>
+
+  <h3>Yield Curve Shapes</h3>
+  <table>
+    <tr><th>Shape</th><th>Long vs Short Rate</th><th>Signal</th></tr>
+    <tr><td><strong>Normal (Upward)</strong></td><td>Long &gt; Short</td><td>เศรษฐกิจปกติ · expectations: rate ขึ้น</td></tr>
+    <tr><td><strong>Inverted (Downward)</strong></td><td>Long &lt; Short</td><td><span class="bad">เตือน recession</span></td></tr>
+    <tr><td><strong>Flat</strong></td><td>Long ≈ Short</td><td>กำลังจะเปลี่ยน (transition)</td></tr>
+    <tr><td><strong>Humped</strong></td><td>Mid &gt; Short &amp; Long</td><td>rare · uncertainty</td></tr>
+  </table>
+
+  <h3>Bond Risks</h3>
+  <table>
+    <tr><th>Risk</th><th>คือ</th></tr>
+    <tr><td><strong>Interest Rate Risk</strong></td><td>rate ขึ้น → price ลด</td></tr>
+    <tr><td><strong>Reinvestment Risk</strong></td><td>coupon ที่ได้ลงทุนต่อที่ rate ต่ำลง</td></tr>
+    <tr><td><strong>Credit / Default Risk</strong></td><td>ผู้ออกผิดนัดชำระ</td></tr>
+    <tr><td><strong>Downgrade Risk</strong></td><td>rating ถูกลด → spread เพิ่ม → price ลด</td></tr>
+    <tr><td><strong>Spread Risk</strong></td><td>credit spread กว้างขึ้น (ไม่ใช่ rating change)</td></tr>
+    <tr><td><strong>Liquidity Risk</strong></td><td>ขายยาก · ต้องลดราคา</td></tr>
+    <tr><td><strong>Inflation Risk</strong></td><td>เงินเฟ้อกัด real return</td></tr>
+    <tr><td><strong>Call Risk</strong></td><td>callable bond → ผู้ออกเรียกคืนเมื่อ rate ลด · นักลงทุนเสียโอกาส</td></tr>
+  </table>
+
+  <h3>Credit Ratings (S&amp;P / Moody's / Fitch)</h3>
+  <table>
+    <tr><th>Investment Grade</th><th>Speculative (Junk)</th></tr>
+    <tr><td>AAA · AA · A · BBB</td><td>BB · B · CCC · CC · C · D</td></tr>
+  </table>
+  <p>BBB- ขึ้นไป = Investment Grade · BB+ ลงไป = Junk · ต่ำสุด = Default (D)</p>
+
+  <h3>Money Market Yields</h3>
+  <table>
+    <tr><th>Yield Type</th><th>สูตร</th></tr>
+    <tr><td>Discount Yield (Bank discount)</td><td>$\frac{F - P}{F} \times \frac{360}{days}$</td></tr>
+    <tr><td>Money Market Yield</td><td>$\frac{F - P}{P} \times \frac{360}{days}$</td></tr>
+    <tr><td>Bond Equivalent Yield (BEY)</td><td>$\frac{F - P}{P} \times \frac{365}{days}$</td></tr>
+    <tr><td>Effective Annual Yield (EAY)</td><td>$(1 + HPY)^{365/days} - 1$</td></tr>
+  </table>
+
+  <h3>Bond Features</h3>
+  <table>
+    <tr><th>Feature</th><th>คือ</th><th>ผลต่อ price/yield</th></tr>
+    <tr><td><strong>Callable</strong></td><td>ผู้ออกเรียกคืนได้</td><td>price ต่ำ · yield สูง (compensate)</td></tr>
+    <tr><td><strong>Putable</strong></td><td>นักลงทุนขายคืนได้</td><td>price สูง · yield ต่ำ</td></tr>
+    <tr><td><strong>Convertible</strong></td><td>แปลงเป็นหุ้นได้</td><td>price สูง · yield ต่ำ (option value)</td></tr>
+    <tr><td><strong>Zero-coupon</strong></td><td>ไม่มี coupon · ขาย discount · ครบมูลค่าหน้า par</td><td>duration = maturity</td></tr>
+  </table>
+</section>
+
+<!-- ============ T9 ============ -->
+<section class="topic" id="t9">
+  <div class="topic-header">
+    <span class="topic-tag">T9</span>
+    <h2>ตราสารอนุพันธ์ (Derivatives)</h2>
+  </div>
+
+  <h3>4 ประเภทอนุพันธ์</h3>
+  <table>
+    <tr><th>ประเภท</th><th>คือ</th><th>Exchange-traded?</th></tr>
+    <tr><td><strong>Forward</strong></td><td>สัญญาซื้อ-ขายราคา/วันที่ตกลง · customizable</td><td>No (OTC)</td></tr>
+    <tr><td><strong>Futures</strong></td><td>เหมือน forward แต่ standardized · มี clearinghouse</td><td>Yes (Exchange)</td></tr>
+    <tr><td><strong>Option</strong></td><td>สิทธิ (ไม่ใช่ภาระ) ซื้อ/ขาย</td><td>Both</td></tr>
+    <tr><td><strong>Swap</strong></td><td>แลกกระแสเงินสด (เช่น fixed-for-float)</td><td>OTC (มัก)</td></tr>
+  </table>
+
+  <h3>Forward / Futures Pricing</h3>
+
+  <div class="fcard">
+    <div class="ftitle"><span class="fnum">D1</span>Forward Price (no income)</div>
+    <div class="fmath">$$F_0 = S_0 (1 + r_f)^T$$</div>
+    <div class="fnote">cost of carry = financing cost · ราคาวันนี้ × (1+rate)^time</div>
+  </div>
+
+  <div class="fcard">
+    <div class="ftitle"><span class="fnum">D2</span>Forward Price (with income/yield)</div>
+    <div class="fmath">$$F_0 = (S_0 - I) (1 + r_f)^T \quad \text{or} \quad F_0 = S_0 \cdot \frac{(1+r_f)^T}{(1+q)^T}$$</div>
+    <div class="fnote">I = PV of income (dividend) · q = yield rate · หัก income ออกก่อน compound</div>
+  </div>
+
+  <div class="fcard">
+    <div class="ftitle"><span class="fnum">D3</span>Futures Pricing (Cost of Carry)</div>
+    <div class="fmath">$$F = S \cdot e^{(r - q + u - y) T}$$</div>
+    <div class="fnote">
+      r = risk-free · q = yield · u = storage cost · y = convenience yield<br>
+      Continuous compounding version
+    </div>
+  </div>
+
+  <h3>Options Basics</h3>
+  <table>
+    <tr><th>Type</th><th>Right to</th><th>Buyer benefits when</th></tr>
+    <tr><td><strong>Call</strong></td><td>BUY underlying at K</td><td>S ↑ (above K)</td></tr>
+    <tr><td><strong>Put</strong></td><td>SELL underlying at K</td><td>S ↓ (below K)</td></tr>
+  </table>
+
+  <h3>Option Moneyness</h3>
+  <table>
+    <tr><th>Status</th><th>Call</th><th>Put</th></tr>
+    <tr><td><strong>ITM</strong> (In-the-Money)</td><td>S &gt; K (มีค่า)</td><td>S &lt; K (มีค่า)</td></tr>
+    <tr><td><strong>ATM</strong> (At-the-Money)</td><td>S = K</td><td>S = K</td></tr>
+    <tr><td><strong>OTM</strong> (Out-of-the-Money)</td><td>S &lt; K (ไม่มีค่า exercise)</td><td>S &gt; K (ไม่มีค่า exercise)</td></tr>
+  </table>
+
+  <div class="box memory">
+    <div class="lbl">Memory Aid — ITM/OTM</div>
+    <strong>Call:</strong> Buyer ได้ <em>"ซื้อถูก"</em> เมื่อ S &gt; K (ตลาดแพง · option ราคาถูก)<br>
+    <strong>Put:</strong> Buyer ได้ <em>"ขายแพง"</em> เมื่อ S &lt; K (ตลาดถูก · option ราคาสูง)
+  </div>
+
+  <h3>Option Payoff &amp; Profit</h3>
+
+  <div class="payoff-grid">
+
+    <div class="payoff">
+      <div class="pname">Long Call</div>
+      <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg">
+        <line x1="20" y1="120" x2="190" y2="120" stroke="#8b96b3" stroke-width="1"/>
+        <line x1="100" y1="20" x2="100" y2="130" stroke="#8b96b3" stroke-width="1" stroke-dasharray="2,2"/>
+        <line x1="20" y1="100" x2="100" y2="100" stroke="#f87171" stroke-width="2"/>
+        <line x1="100" y1="100" x2="180" y2="20" stroke="#4ade80" stroke-width="2"/>
+        <line x1="20" y1="120" x2="100" y2="120" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="3,2"/>
+        <line x1="100" y1="120" x2="180" y2="40" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="3,2"/>
+        <text x="105" y="135" fill="#6ee7ff" font-size="10">K</text>
+        <text x="15" y="105" fill="#f87171" font-size="9">−P</text>
+      </svg>
+      <div class="pnote">Max loss = premium · Unlimited gain · BE = K + premium</div>
+    </div>
+
+    <div class="payoff">
+      <div class="pname">Long Put</div>
+      <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg">
+        <line x1="20" y1="120" x2="190" y2="120" stroke="#8b96b3" stroke-width="1"/>
+        <line x1="100" y1="20" x2="100" y2="130" stroke="#8b96b3" stroke-width="1" stroke-dasharray="2,2"/>
+        <line x1="20" y1="20" x2="100" y2="100" stroke="#4ade80" stroke-width="2"/>
+        <line x1="100" y1="100" x2="180" y2="100" stroke="#f87171" stroke-width="2"/>
+        <line x1="20" y1="40" x2="100" y2="120" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="3,2"/>
+        <line x1="100" y1="120" x2="180" y2="120" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="3,2"/>
+        <text x="105" y="135" fill="#6ee7ff" font-size="10">K</text>
+        <text x="105" y="105" fill="#f87171" font-size="9">−P</text>
+      </svg>
+      <div class="pnote">Max gain = K (S drops to 0) · Max loss = premium · BE = K − premium</div>
+    </div>
+
+    <div class="payoff">
+      <div class="pname">Short Call</div>
+      <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg">
+        <line x1="20" y1="60" x2="190" y2="60" stroke="#8b96b3" stroke-width="1"/>
+        <line x1="100" y1="20" x2="100" y2="130" stroke="#8b96b3" stroke-width="1" stroke-dasharray="2,2"/>
+        <line x1="20" y1="80" x2="100" y2="80" stroke="#4ade80" stroke-width="2"/>
+        <line x1="100" y1="80" x2="180" y2="130" stroke="#f87171" stroke-width="2"/>
+        <text x="105" y="55" fill="#6ee7ff" font-size="10">K</text>
+        <text x="15" y="75" fill="#4ade80" font-size="9">+P</text>
+      </svg>
+      <div class="pnote">Max gain = premium · <strong>Unlimited loss</strong> · risky</div>
+    </div>
+
+    <div class="payoff">
+      <div class="pname">Short Put</div>
+      <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg">
+        <line x1="20" y1="60" x2="190" y2="60" stroke="#8b96b3" stroke-width="1"/>
+        <line x1="100" y1="20" x2="100" y2="130" stroke="#8b96b3" stroke-width="1" stroke-dasharray="2,2"/>
+        <line x1="20" y1="130" x2="100" y2="80" stroke="#f87171" stroke-width="2"/>
+        <line x1="100" y1="80" x2="180" y2="80" stroke="#4ade80" stroke-width="2"/>
+        <text x="105" y="55" fill="#6ee7ff" font-size="10">K</text>
+        <text x="105" y="75" fill="#4ade80" font-size="9">+P</text>
+      </svg>
+      <div class="pnote">Max gain = premium · Max loss = K (S drops to 0)</div>
+    </div>
+
+  </div>
+
+  <h3>Put-Call Parity</h3>
+  <div class="fcard">
+    <div class="ftitle"><span class="fnum">D4</span>Put-Call Parity (European, no dividend)</div>
+    <div class="fmath">$$C - P = S_0 - \frac{K}{(1+r)^T}$$<br>$$\text{or} \quad C + \frac{K}{(1+r)^T} = P + S_0$$</div>
+    <div class="fnote">
+      • Synthetic positions:<br>
+      &nbsp;&nbsp;<strong>Synthetic Call:</strong> Long Put + Long Stock + Borrow K<br>
+      &nbsp;&nbsp;<strong>Synthetic Put:</strong> Long Call + Short Stock + Lend K<br>
+      &nbsp;&nbsp;<strong>Synthetic Stock:</strong> Long Call − Long Put + Lend K<br>
+      • ถ้า parity ไม่ถือ → arbitrage opportunity
+    </div>
+  </div>
+
+  <h3>Option Greeks</h3>
+  <table>
+    <tr><th>Greek</th><th>วัดอะไร</th><th>Call</th><th>Put</th></tr>
+    <tr><td><strong>Δ Delta</strong></td><td>$\partial V / \partial S$ (sensitivity to price)</td><td>0 to +1</td><td>−1 to 0</td></tr>
+    <tr><td><strong>Γ Gamma</strong></td><td>$\partial^2 V / \partial S^2$ (delta change)</td><td>Positive</td><td>Positive</td></tr>
+    <tr><td><strong>ν Vega</strong></td><td>$\partial V / \partial \sigma$ (volatility)</td><td>Positive</td><td>Positive</td></tr>
+    <tr><td><strong>Θ Theta</strong></td><td>$\partial V / \partial t$ (time decay)</td><td>Negative</td><td>Negative (มัก)</td></tr>
+    <tr><td><strong>ρ Rho</strong></td><td>$\partial V / \partial r$ (interest rate)</td><td>Positive</td><td>Negative</td></tr>
+  </table>
+
+  <div class="box memory">
+    <div class="lbl">Greek Mnemonics</div>
+    • <strong>Δ Delta</strong> = "price reaction" — ATM call ≈ 0.5<br>
+    • <strong>Γ Gamma</strong> = "delta-of-delta" — peaks at ATM<br>
+    • <strong>ν Vega</strong> = "volatility lover" — long options love high σ<br>
+    • <strong>Θ Theta</strong> = "time killer" — long options decay daily<br>
+    • <strong>ρ Rho</strong> = "rate sensitivity" — call ↑ rate, put ↓ rate
+  </div>
+
+  <h3>Option Strategies</h3>
+  <table>
+    <tr><th>Strategy</th><th>คือ</th><th>View</th></tr>
+    <tr><td><strong>Protective Put</strong></td><td>Long Stock + Long Put</td><td>Bullish + insurance</td></tr>
+    <tr><td><strong>Covered Call</strong></td><td>Long Stock + Short Call</td><td>Neutral/slightly bullish</td></tr>
+    <tr><td><strong>Bull Call Spread</strong></td><td>Long Call(low K) + Short Call(high K)</td><td>Moderately bullish</td></tr>
+    <tr><td><strong>Bear Put Spread</strong></td><td>Long Put(high K) + Short Put(low K)</td><td>Moderately bearish</td></tr>
+    <tr><td><strong>Long Straddle</strong></td><td>Long Call + Long Put (same K)</td><td>High volatility (direction?)</td></tr>
+    <tr><td><strong>Long Strangle</strong></td><td>Long OTM Call + Long OTM Put</td><td>Very high volatility</td></tr>
+    <tr><td><strong>Butterfly</strong></td><td>3-strike combo</td><td>Low volatility</td></tr>
+  </table>
+
+  <h3>Swap Basics</h3>
+  <table>
+    <tr><th>Swap Type</th><th>คือ</th></tr>
+    <tr><td><strong>Interest Rate Swap</strong></td><td>แลก fixed ↔ floating rate (เช่น LIBOR ↔ 5%)</td></tr>
+    <tr><td><strong>Currency Swap</strong></td><td>แลกกระแสเงินสดในสกุลต่าง</td></tr>
+    <tr><td><strong>Equity Swap</strong></td><td>แลก equity return กับ fixed/floating rate</td></tr>
+  </table>
+</section>
+
+<!-- ============ T10 ============ -->
+<section class="topic" id="t10">
+  <div class="topic-header">
+    <span class="topic-tag">T10</span>
+    <h2>กองทุนรวม (Mutual Funds)</h2>
+  </div>
+
+  <h3>Fund Types (Thai)</h3>
+  <table>
+    <tr><th>Type</th><th>ลงทุนใน</th><th>Risk</th></tr>
+    <tr><td>Money Market Fund (MMF)</td><td>ตราสารหนี้ระยะสั้น &lt; 1 ปี</td><td>ต่ำสุด</td></tr>
+    <tr><td>Fixed Income / Bond Fund</td><td>พันธบัตร / หุ้นกู้</td><td>ต่ำ-กลาง</td></tr>
+    <tr><td>Equity Fund</td><td>หุ้นสามัญ</td><td>สูง</td></tr>
+    <tr><td>Balanced / Mixed Fund</td><td>หุ้น + ตราสารหนี้</td><td>กลาง</td></tr>
+    <tr><td>SSF (Super Savings Fund)</td><td>หลายประเภท · ลดหย่อนภาษีได้</td><td>varies</td></tr>
+    <tr><td>RMF (Retirement Mutual Fund)</td><td>เพื่อเกษียณ · ลดหย่อนได้</td><td>varies</td></tr>
+    <tr><td>ETF (Exchange Traded Fund)</td><td>ตาม index · trade like stock</td><td>ตาม index</td></tr>
+    <tr><td>Foreign Investment Fund (FIF)</td><td>หลักทรัพย์ต่างประเทศ</td><td>+FX risk</td></tr>
+  </table>
+
+  <h3>Fund Math</h3>
+
+  <div class="fcard">
+    <div class="ftitle"><span class="fnum">M1</span>NAV per Unit</div>
+    <div class="fmath">$$NAV_{per\ unit} = \frac{Total\ Net\ Asset\ Value}{Total\ Units\ Outstanding}$$</div>
+    <div class="fnote">Net Asset Value = Market value of holdings − Liabilities · คำนวณรายวัน (สิ้นวันทำการ)</div>
+  </div>
+
+  <div class="fcard">
+    <div class="ftitle"><span class="fnum">M2</span>Expense Ratio</div>
+    <div class="fmath">$$Expense\ Ratio = \frac{Annual\ Operating\ Expenses}{Avg\ Net\ Assets}$$</div>
+    <div class="fnote">Total fees ต่อปี · รวม management fee + admin + other ongoing costs</div>
+  </div>
+
+  <div class="fcard">
+    <div class="ftitle"><span class="fnum">M3</span>Sales Charges</div>
+    <table>
+      <tr><th>Type</th><th>คือ</th></tr>
+      <tr><td>Front-end load</td><td>หักตอนซื้อ (เช่น 1.5% ของ NAV)</td></tr>
+      <tr><td>Back-end load (CDSC)</td><td>หักตอนขาย · มัก reduce over time</td></tr>
+      <tr><td>No-load</td><td>ไม่มี front/back</td></tr>
+    </table>
+  </div>
+
+  <div class="fcard">
+    <div class="ftitle"><span class="fnum">M4</span>Total Return ของกองทุน</div>
+    <div class="fmath">$$R = \frac{NAV_1 - NAV_0 + Distributions}{NAV_0}$$</div>
+    <div class="fnote">Distributions = dividend + capital gain ที่กองจ่าย</div>
+  </div>
+
+  <div class="fcard">
+    <div class="ftitle"><span class="fnum">M5</span>Tracking Error</div>
+    <div class="fmath">$$TE = \sigma(R_p - R_{benchmark})$$</div>
+    <div class="fnote">SD of (fund return − benchmark return) · ต่ำ = passive/index · สูง = active</div>
+  </div>
+
+  <h3>Fund Structure</h3>
+  <table>
+    <tr><th>Open-end</th><th>Closed-end</th></tr>
+    <tr><td>Units ออกได้ไม่จำกัด</td><td>Units fixed · trade on exchange</td></tr>
+    <tr><td>ซื้อ/ขายที่ NAV</td><td>ซื้อ/ขายที่ market price (premium/discount to NAV)</td></tr>
+    <tr><td>มัก daily liquidity</td><td>Liquidity ผ่าน secondary market</td></tr>
+  </table>
+</section>
+
+<!-- ============ T11 ============ -->
+<section class="topic" id="t11">
+  <div class="topic-header">
+    <span class="topic-tag">T11</span>
+    <h2>การบริหารกลุ่มหลักทรัพย์ (Portfolio Management)</h2>
+  </div>
+
+  <h3>Portfolio Management Process</h3>
+  <ol>
+    <li><strong>Planning</strong> — ทำ Investment Policy Statement (IPS)</li>
+    <li><strong>Execution</strong> — Asset allocation + security selection + implementation</li>
+    <li><strong>Feedback</strong> — Monitoring + Rebalancing + Performance measurement</li>
+  </ol>
+
+  <h3>IPS Components (RR-TTLLU)</h3>
+  <table>
+    <tr><th>Component</th><th>คือ</th></tr>
+    <tr><td><strong>R</strong>eturn objective</td><td>เป้าหมายผลตอบแทน (real vs nominal · pre/post-tax)</td></tr>
+    <tr><td><strong>R</strong>isk tolerance</td><td>Ability (financial) + Willingness (psychological)</td></tr>
+    <tr><td><strong>T</strong>ime horizon</td><td>short / medium / long-term</td></tr>
+    <tr><td><strong>T</strong>axes</td><td>tax-deferred vs taxable</td></tr>
+    <tr><td><strong>L</strong>iquidity needs</td><td>cash flow requirements</td></tr>
+    <tr><td><strong>L</strong>egal/regulatory</td><td>ข้อจำกัดทางกฎหมาย</td></tr>
+    <tr><td><strong>U</strong>nique circumstances</td><td>ESG preferences · religion · family</td></tr>
+  </table>
+
+  <h3>Asset Allocation</h3>
+  <table>
+    <tr><th>Type</th><th>คือ</th></tr>
+    <tr><td><strong>Strategic (SAA)</strong></td><td>Long-term target weights · base case</td></tr>
+    <tr><td><strong>Tactical (TAA)</strong></td><td>Short-term deviations จาก SAA · เพื่อ exploit mispricings</td></tr>
+    <tr><td><strong>Dynamic</strong></td><td>Adjust based on changing circumstances</td></tr>
+  </table>
+
+  <h3>Portfolio Expected Return</h3>
+  <div class="fcard">
+    <div class="fmath">$$E(R_p) = \sum w_i \cdot E(R_i)$$</div>
+    <div class="fnote">Linear combination of weights × expected returns</div>
+  </div>
+
+  <h3>Rebalancing Approaches</h3>
+  <table>
+    <tr><th>Method</th><th>คือ</th></tr>
+    <tr><td>Calendar Rebalancing</td><td>ทุก X เดือน/ไตรมาส</td></tr>
+    <tr><td>Percentage-of-Portfolio</td><td>เมื่อ weight ออกจาก target ±X%</td></tr>
+    <tr><td>Tactical Rebalancing</td><td>ตาม market view</td></tr>
+  </table>
+
+  <h3>Behavioral Biases ที่ออกข้อสอบ</h3>
+  <table>
+    <tr><th>Bias</th><th>ลักษณะ</th></tr>
+    <tr><td>Overconfidence</td><td>คิดว่ารู้มากกว่าจริง</td></tr>
+    <tr><td>Anchoring</td><td>ติดกับเลขแรกที่เห็น</td></tr>
+    <tr><td>Confirmation</td><td>หาข้อมูลที่ confirm เท่านั้น</td></tr>
+    <tr><td>Loss Aversion</td><td>กลัวขาดทุนมากกว่ากำไรเท่ากัน</td></tr>
+    <tr><td>Herding</td><td>ทำตามฝูง</td></tr>
+    <tr><td>Disposition Effect</td><td>ขายของกำไรเร็ว · ถือของขาดทุนนาน</td></tr>
+    <tr><td>Hindsight</td><td>คิดว่าทำนายได้แต่แรก</td></tr>
+  </table>
+</section>
+
+<!-- ============ ANTI-TRAP ============ -->
+<section class="topic" id="anti-trap">
+  <div class="topic-header">
+    <span class="topic-tag" style="background: linear-gradient(135deg, var(--magic), var(--accent));">★</span>
+    <h2>Anti-Trap Reading Ritual &amp; 8 Patches</h2>
+  </div>
+
+  <h3>7-Second Pre-Lock Checklist</h3>
+  <ol>
+    <li>Re-read qualifier ใน stem (ไม่ใช่/ไม่ถูกต้อง/ยกเว้น)</li>
+    <li>Check Direction word (ได้มา/ใช้ไป · เพิ่ม/ลด)</li>
+    <li>Check Polarity (ถูก/ผิด · ใช่/ไม่ใช่)</li>
+    <li>Check Magnitude + Units (ล้าน vs พัน · % vs เท่า)</li>
+    <li>Check Technical Noun (FVPL/FVOCI · EM/D/E · CFO/CFI)</li>
+    <li>Check "ถูกทั้ง 2) และ 3)" — derive ก่อน reject</li>
+    <li>Lock + Next (3-min hard cap)</li>
+  </ol>
+
+  <h3>8 Patches จาก Mock #1-5 + วันนี้</h3>
+  <table>
+    <tr><th>#</th><th>Patch</th><th>Quick Rule</th></tr>
+    <tr><td>1</td><td>Variance √ rule</td><td>ทุก σ² ต้อง √ ตอนจบ · ใช้ % form (Q37 lesson)</td></tr>
+    <tr><td>2</td><td>FCFF₀ vs FCFF₁</td><td>Gordon ใช้ "₁" เสมอ · ถ้าให้ "₀" → ×(1+g) ก่อน</td></tr>
+    <tr><td>3</td><td>EM = 1 + D/E</td><td>D/E ต่างจาก EM · DuPont confusion</td></tr>
+    <tr><td>4</td><td>b = Retention</td><td>"b = bury" ไม่ใช่ payout · g = ROE × b</td></tr>
+    <tr><td>5</td><td>FVPL → P&amp;L · FVOCI → OCI · AC ≠ OCI</td><td>HTM debt = Amortized Cost · ไม่มี OCI · interest via P&amp;L</td></tr>
+    <tr><td>6</td><td>TFRS Interest/Dividend</td><td>= policy choice · ถ้าตัวเลือกมี "ตามนโยบาย" → เลือก</td></tr>
+    <tr><td>7</td><td>Direction reversal</td><td>"ได้มา/ใช้ไป" — เช็ค sign + ก่อน lock</td></tr>
+    <tr><td>8</td><td>Algebra verify</td><td>ก่อน reject statement → derive algebra cancellation · ห้าม assume false เพราะไม่คุ้น</td></tr>
+  </table>
+
+  <h3>3-Pass Time Strategy</h3>
+  <table>
+    <tr><th>Pass</th><th>Time</th><th>Target</th><th>Speed</th></tr>
+    <tr><td>Pass 1</td><td>0-90 min</td><td>~100 Q (Concept + Vocab + Tier A calc)</td><td>45-60 sec/Q</td></tr>
+    <tr><td>Pass 2</td><td>90-180 min</td><td>~50 Q (Tier B calc + Statement I/II/III)</td><td>2-3 min/Q</td></tr>
+    <tr><td>Pass 3</td><td>180-225 min</td><td>~30 Q (Tier C + flagged review)</td><td>3 min max</td></tr>
+    <tr><td>Final 15 min</td><td>225-240 min</td><td>Verify 180/180 + bulk guess</td><td>—</td></tr>
+  </table>
+
+  <div class="box memory">
+    <div class="lbl">Hard Rules</div>
+    • <strong>15-sec read rule:</strong> ถ้าอ่าน 15 วินาทียังไม่เข้าใจ → flag + Next<br>
+    • <strong>3-min hard cap:</strong> ห้ามใช้เกิน 3 นาที/ข้อ · ถ้าเกิน → guess + Next<br>
+    • <strong>Checkpoints:</strong> Q45/Q90/Q135/Q160 (verify pace on track)<br>
+    • <strong>ห้าม blank:</strong> ทุกข้อต้องตอบ (penalty = 0 ไม่มี negative marking)
+  </div>
+</section>
+
+<div class="footer">
+  AISA Mega Study Guide · Created 2026-05-22<br>
+  For exam 2026-05-24 09:30 UTCC อาคาร 7 · ห้ามนำเข้าห้องสอบ — ใช้ฝึก recall ก่อนสอบ<br>
+  IKAO OS v2 · Print-friendly (Ctrl+P) · Mobile-optimized
+</div>
+
+</div>
+</body>
+</html>
