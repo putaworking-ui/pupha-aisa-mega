@@ -21,6 +21,17 @@ window.MathJax = {
     --text: #e8ecf5; --text-dim: #8b96b3; --text-bright: #ffffff;
     --accent: #6ee7ff; --warn: #fbbf24; --danger: #f87171;
     --good: #4ade80; --info: #5fa4ff; --magic: #b88aff;
+    --shadow: rgba(0,0,0,0.4);
+    --code-bg: rgba(0,0,0,0.25);
+  }
+  :root[data-theme="light"] {
+    --bg: #f5f7fa; --bg-card: #ffffff; --bg-card-2: #f0f3f8;
+    --border: #d8dde6; --border-strong: #b9c2d1;
+    --text: #1a2238; --text-dim: #5a6580; --text-bright: #0b0f1a;
+    --accent: #0891b2; --warn: #d97706; --danger: #dc2626;
+    --good: #16a34a; --info: #2563eb; --magic: #7c3aed;
+    --shadow: rgba(0,0,0,0.08);
+    --code-bg: rgba(0,0,0,0.05);
   }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
@@ -35,7 +46,116 @@ window.MathJax = {
     line-height: 1.55;
     min-height: 100vh;
     padding: 20px 14px 60px;
+    transition: background-color 0.2s, color 0.2s;
   }
+  :root[data-theme="light"] body {
+    background:
+      radial-gradient(circle at 20% 10%, rgba(8,145,178,0.05) 0%, transparent 40%),
+      radial-gradient(circle at 80% 90%, rgba(124,58,237,0.04) 0%, transparent 50%),
+      var(--bg);
+  }
+
+  /* Side TOC (desktop sticky sidebar) */
+  .side-toc {
+    position: fixed;
+    top: 14px;
+    left: 14px;
+    width: 200px;
+    max-height: calc(100vh - 28px);
+    overflow-y: auto;
+    background: var(--bg-card);
+    border: 1px solid var(--border-strong);
+    border-radius: 14px;
+    padding: 14px 12px;
+    z-index: 999;
+    box-shadow: 0 4px 16px var(--shadow);
+    transition: background-color 0.2s, border-color 0.2s;
+  }
+  .side-toc h3 {
+    color: var(--text-dim);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 10px;
+    font-weight: 700;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+  .side-toc-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 10px;
+    margin-bottom: 4px;
+    border-radius: 8px;
+    color: var(--text);
+    text-decoration: none;
+    font-size: 13px;
+    border: 1px solid transparent;
+    transition: all 0.12s;
+  }
+  .side-toc-link:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: var(--bg-card-2);
+    transform: translateX(2px);
+  }
+  .side-toc-link .stag {
+    background: rgba(110,231,255,0.15);
+    color: var(--accent);
+    padding: 2px 7px;
+    border-radius: 5px;
+    font-weight: 800;
+    font-size: 10px;
+    font-family: 'IBM Plex Mono', monospace;
+    min-width: 32px;
+    text-align: center;
+  }
+  :root[data-theme="light"] .side-toc-link .stag {
+    background: rgba(8,145,178,0.12);
+  }
+  .side-toc-link.active {
+    background: var(--bg-card-2);
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+  /* Hide side-toc on mobile, show top TOC instead */
+  @media (max-width: 900px) {
+    .side-toc { display: none; }
+  }
+  /* On desktop, hide the original top TOC since side-toc replaces it */
+  @media (min-width: 901px) {
+    .container > .toc { display: none; }
+    .container { margin-left: 230px; }
+  }
+
+  /* Theme toggle button */
+  .theme-toggle {
+    position: fixed;
+    top: 14px;
+    right: 14px;
+    z-index: 1000;
+    background: var(--bg-card);
+    border: 1px solid var(--border-strong);
+    color: var(--text-bright);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    box-shadow: 0 4px 12px var(--shadow);
+    transition: transform 0.15s, border-color 0.15s, background 0.2s;
+  }
+  .theme-toggle:hover { transform: scale(1.08); border-color: var(--accent); }
+  .theme-toggle:active { transform: scale(0.95); }
+  .theme-toggle .icon-sun, .theme-toggle .icon-moon { line-height: 1; }
+  :root[data-theme="light"] .theme-toggle .icon-moon { display: inline; }
+  :root[data-theme="light"] .theme-toggle .icon-sun { display: none; }
+  .theme-toggle .icon-moon { display: none; }
+  .theme-toggle .icon-sun { display: inline; }
   .container { max-width: 1100px; margin: 0 auto; }
   code, .mono { font-family: 'IBM Plex Mono', monospace; font-size: 0.9em; }
 
@@ -122,7 +242,7 @@ window.MathJax = {
   .fcard .ftitle { font-weight: 700; color: var(--text-bright); margin-bottom: 6px; font-size: 14px; display: flex; align-items: baseline; gap: 6px; }
   .fcard .fnum { background: rgba(110,231,255,0.15); color: var(--accent); padding: 1px 6px; border-radius: 4px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 700; }
   .fcard .fen { color: var(--text-dim); font-size: 11px; font-style: italic; font-weight: 400; }
-  .fcard .fmath { background: rgba(0,0,0,0.25); padding: 10px 12px; border-radius: 6px; text-align: center; margin: 6px 0; overflow-x: auto; }
+  .fcard .fmath { background: var(--code-bg); padding: 10px 12px; border-radius: 6px; text-align: center; margin: 6px 0; overflow-x: auto; }
   .fcard .fnote { font-size: 12px; color: var(--text-dim); margin-top: 4px; }
   .fcard .fnote .k { color: var(--accent); font-weight: 600; }
   .fcard .fnote .t { color: var(--warn); font-weight: 600; }
@@ -211,6 +331,26 @@ window.MathJax = {
 </style>
 </head>
 <body>
+<button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="สลับโหมดมืด/สว่าง">
+  <span class="icon-sun">☀</span><span class="icon-moon">🌙</span>
+</button>
+
+<aside class="side-toc" id="sideToc">
+  <h3>11 วิชา</h3>
+  <a class="side-toc-link" href="#t1"><span class="stag">T1</span>จรรยาบรรณ</a>
+  <a class="side-toc-link" href="#t2"><span class="stag">T2</span>GIPS</a>
+  <a class="side-toc-link" href="#t3"><span class="stag">T3</span>เกณฑ์</a>
+  <a class="side-toc-link" href="#t4"><span class="stag">T4</span>หลักการลงทุน</a>
+  <a class="side-toc-link" href="#t5"><span class="stag">T5</span>การเงินธุรกิจ</a>
+  <a class="side-toc-link" href="#t6"><span class="stag">T6</span>งบการเงิน</a>
+  <a class="side-toc-link" href="#t7"><span class="stag">T7</span>ตราสารทุน</a>
+  <a class="side-toc-link" href="#t8"><span class="stag">T8</span>ตราสารหนี้</a>
+  <a class="side-toc-link" href="#t9"><span class="stag">T9</span>อนุพันธ์</a>
+  <a class="side-toc-link" href="#t10"><span class="stag">T10</span>กองทุนรวม</a>
+  <a class="side-toc-link" href="#t11"><span class="stag">T11</span>กลุ่มหลักทรัพย์</a>
+  <a class="side-toc-link" href="#anti-trap"><span class="stag">★</span>Anti-Trap</a>
+</aside>
+
 <div class="container">
 
 <!-- ============ HERO ============ -->
@@ -1529,5 +1669,45 @@ window.MathJax = {
 </div>
 
 </div>
+
+<script>
+// Theme toggle with localStorage persistence
+(function() {
+  var root = document.documentElement;
+  var btn = document.getElementById('themeToggle');
+  var saved = localStorage.getItem('aisa-theme');
+  if (saved === 'light') root.setAttribute('data-theme', 'light');
+  btn.addEventListener('click', function() {
+    var isLight = root.getAttribute('data-theme') === 'light';
+    if (isLight) {
+      root.removeAttribute('data-theme');
+      localStorage.setItem('aisa-theme', 'dark');
+    } else {
+      root.setAttribute('data-theme', 'light');
+      localStorage.setItem('aisa-theme', 'light');
+    }
+  });
+})();
+
+// Active section highlight in side TOC
+(function() {
+  var links = document.querySelectorAll('.side-toc-link');
+  var sections = Array.from(links).map(function(a) {
+    var id = a.getAttribute('href').slice(1);
+    return { id: id, el: document.getElementById(id), link: a };
+  }).filter(function(s) { return s.el; });
+  function update() {
+    var pos = window.scrollY + 100;
+    var current = sections[0];
+    for (var i = 0; i < sections.length; i++) {
+      if (sections[i].el.offsetTop <= pos) current = sections[i];
+    }
+    links.forEach(function(l) { l.classList.remove('active'); });
+    if (current) current.link.classList.add('active');
+  }
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+})();
+</script>
 </body>
 </html>
