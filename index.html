@@ -1256,7 +1256,16 @@ window.MathJax = {
   </div>
 
   <div class="fcard">
-    <div class="ftitle"><span class="fnum">B7</span>Convexity Adjustment</div>
+    <div class="ftitle"><span class="fnum">B7</span>Convexity (formula)</div>
+    <div class="fmath">$$Convexity = \frac{(P_+) + (P_-) - 2P_0}{2 P_0 \, (\Delta y)^2}$$</div>
+    <div class="fnote">
+      P₊ = price เมื่อ yield ↓ Δy · P₋ = price เมื่อ yield ↑ Δy · P₀ = price ปัจจุบัน<br>
+      curvature measure · หน่วยเป็น years² · ค่านี้ไปใส่ใน B8 ต่อ
+    </div>
+  </div>
+
+  <div class="fcard">
+    <div class="ftitle"><span class="fnum">B8</span>Convexity Adjustment</div>
     <div class="fmath">$$\%\Delta P \approx -Mod\ D \times \Delta y + \frac{1}{2} \times Convexity \times (\Delta y)^2$$</div>
     <div class="fnote">
       • Duration เป็น linear approximation · Convexity แก้ curvature<br>
@@ -1354,22 +1363,22 @@ window.MathJax = {
   <h3>Options Basics</h3>
   <table>
     <tr><th>Type</th><th>Right to</th><th>Buyer benefits when</th></tr>
-    <tr><td><strong>Call</strong></td><td>BUY underlying at K</td><td>S ↑ (above K)</td></tr>
-    <tr><td><strong>Put</strong></td><td>SELL underlying at K</td><td>S ↓ (below K)</td></tr>
+    <tr><td><strong>Call</strong></td><td>BUY underlying at X</td><td>S ↑ (above X)</td></tr>
+    <tr><td><strong>Put</strong></td><td>SELL underlying at X</td><td>S ↓ (below X)</td></tr>
   </table>
 
   <h3>Option Moneyness</h3>
   <table>
     <tr><th>Status</th><th>Call</th><th>Put</th></tr>
-    <tr><td><strong>ITM</strong> (In-the-Money)</td><td>S &gt; K (มีค่า)</td><td>S &lt; K (มีค่า)</td></tr>
-    <tr><td><strong>ATM</strong> (At-the-Money)</td><td>S = K</td><td>S = K</td></tr>
-    <tr><td><strong>OTM</strong> (Out-of-the-Money)</td><td>S &lt; K (ไม่มีค่า exercise)</td><td>S &gt; K (ไม่มีค่า exercise)</td></tr>
+    <tr><td><strong>ITM</strong> (In-the-Money)</td><td>S &gt; X (มีค่า)</td><td>S &lt; X (มีค่า)</td></tr>
+    <tr><td><strong>ATM</strong> (At-the-Money)</td><td>S = X</td><td>S = X</td></tr>
+    <tr><td><strong>OTM</strong> (Out-of-the-Money)</td><td>S &lt; X (ไม่มีค่า exercise)</td><td>S &gt; X (ไม่มีค่า exercise)</td></tr>
   </table>
 
   <div class="box memory">
     <div class="lbl">Memory Aid — ITM/OTM</div>
-    <strong>Call:</strong> Buyer ได้ <em>"ซื้อถูก"</em> เมื่อ S &gt; K (ตลาดแพง · option ราคาถูก)<br>
-    <strong>Put:</strong> Buyer ได้ <em>"ขายแพง"</em> เมื่อ S &lt; K (ตลาดถูก · option ราคาสูง)
+    <strong>Call:</strong> Buyer ได้ <em>"ซื้อถูก"</em> เมื่อ S &gt; X (ตลาดแพง · option ราคาถูก)<br>
+    <strong>Put:</strong> Buyer ได้ <em>"ขายแพง"</em> เมื่อ S &lt; X (ตลาดถูก · option ราคาสูง)
   </div>
 
   <h3>Option Payoff &amp; Profit</h3>
@@ -1385,10 +1394,10 @@ window.MathJax = {
         <line x1="100" y1="100" x2="180" y2="20" stroke="#4ade80" stroke-width="2"/>
         <line x1="20" y1="120" x2="100" y2="120" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="3,2"/>
         <line x1="100" y1="120" x2="180" y2="40" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="3,2"/>
-        <text x="105" y="135" fill="#6ee7ff" font-size="10">K</text>
+        <text x="105" y="135" fill="#6ee7ff" font-size="10">X</text>
         <text x="15" y="105" fill="#f87171" font-size="9">−P</text>
       </svg>
-      <div class="pnote">Max loss = premium · Unlimited gain · BE = K + premium</div>
+      <div class="pnote">Max loss = premium · Unlimited gain · BE = X + premium</div>
     </div>
 
     <div class="payoff">
@@ -1400,10 +1409,10 @@ window.MathJax = {
         <line x1="100" y1="100" x2="180" y2="100" stroke="#f87171" stroke-width="2"/>
         <line x1="20" y1="40" x2="100" y2="120" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="3,2"/>
         <line x1="100" y1="120" x2="180" y2="120" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="3,2"/>
-        <text x="105" y="135" fill="#6ee7ff" font-size="10">K</text>
+        <text x="105" y="135" fill="#6ee7ff" font-size="10">X</text>
         <text x="105" y="105" fill="#f87171" font-size="9">−P</text>
       </svg>
-      <div class="pnote">Max gain = K (S drops to 0) · Max loss = premium · BE = K − premium</div>
+      <div class="pnote">Max gain = X (S drops to 0) · Max loss = premium · BE = X − premium</div>
     </div>
 
     <div class="payoff">
@@ -1413,7 +1422,7 @@ window.MathJax = {
         <line x1="100" y1="20" x2="100" y2="130" stroke="#8b96b3" stroke-width="1" stroke-dasharray="2,2"/>
         <line x1="20" y1="80" x2="100" y2="80" stroke="#4ade80" stroke-width="2"/>
         <line x1="100" y1="80" x2="180" y2="130" stroke="#f87171" stroke-width="2"/>
-        <text x="105" y="55" fill="#6ee7ff" font-size="10">K</text>
+        <text x="105" y="55" fill="#6ee7ff" font-size="10">X</text>
         <text x="15" y="75" fill="#4ade80" font-size="9">+P</text>
       </svg>
       <div class="pnote">Max gain = premium · <strong>Unlimited loss</strong> · risky</div>
@@ -1426,10 +1435,10 @@ window.MathJax = {
         <line x1="100" y1="20" x2="100" y2="130" stroke="#8b96b3" stroke-width="1" stroke-dasharray="2,2"/>
         <line x1="20" y1="130" x2="100" y2="80" stroke="#f87171" stroke-width="2"/>
         <line x1="100" y1="80" x2="180" y2="80" stroke="#4ade80" stroke-width="2"/>
-        <text x="105" y="55" fill="#6ee7ff" font-size="10">K</text>
+        <text x="105" y="55" fill="#6ee7ff" font-size="10">X</text>
         <text x="105" y="75" fill="#4ade80" font-size="9">+P</text>
       </svg>
-      <div class="pnote">Max gain = premium · Max loss = K (S drops to 0)</div>
+      <div class="pnote">Max gain = premium · Max loss = X (S drops to 0)</div>
     </div>
 
   </div>
@@ -1437,12 +1446,12 @@ window.MathJax = {
   <h3>Put-Call Parity</h3>
   <div class="fcard">
     <div class="ftitle"><span class="fnum">D4</span>Put-Call Parity (European, no dividend)</div>
-    <div class="fmath">$$C - P = S_0 - \frac{K}{(1+r)^T}$$<br>$$\text{or} \quad C + \frac{K}{(1+r)^T} = P + S_0$$</div>
+    <div class="fmath">$$C - P = S_0 - \frac{X}{(1+r)^T}$$<br>$$\text{or} \quad C + \frac{X}{(1+r)^T} = P + S_0$$</div>
     <div class="fnote">
       • Synthetic positions:<br>
-      &nbsp;&nbsp;<strong>Synthetic Call:</strong> Long Put + Long Stock + Borrow K<br>
-      &nbsp;&nbsp;<strong>Synthetic Put:</strong> Long Call + Short Stock + Lend K<br>
-      &nbsp;&nbsp;<strong>Synthetic Stock:</strong> Long Call − Long Put + Lend K<br>
+      &nbsp;&nbsp;<strong>Synthetic Call:</strong> Long Put + Long Stock + Borrow X<br>
+      &nbsp;&nbsp;<strong>Synthetic Put:</strong> Long Call + Short Stock + Lend X<br>
+      &nbsp;&nbsp;<strong>Synthetic Stock:</strong> Long Call − Long Put + Lend X<br>
       • ถ้า parity ไม่ถือ → arbitrage opportunity
     </div>
   </div>
@@ -1471,9 +1480,9 @@ window.MathJax = {
     <tr><th>Strategy</th><th>คือ</th><th>View</th></tr>
     <tr><td><strong>Protective Put</strong></td><td>Long Stock + Long Put</td><td>Bullish + insurance</td></tr>
     <tr><td><strong>Covered Call</strong></td><td>Long Stock + Short Call</td><td>Neutral/slightly bullish</td></tr>
-    <tr><td><strong>Bull Call Spread</strong></td><td>Long Call(low K) + Short Call(high K)</td><td>Moderately bullish</td></tr>
-    <tr><td><strong>Bear Put Spread</strong></td><td>Long Put(high K) + Short Put(low K)</td><td>Moderately bearish</td></tr>
-    <tr><td><strong>Long Straddle</strong></td><td>Long Call + Long Put (same K)</td><td>High volatility (direction?)</td></tr>
+    <tr><td><strong>Bull Call Spread</strong></td><td>Long Call(low X) + Short Call(high X)</td><td>Moderately bullish</td></tr>
+    <tr><td><strong>Bear Put Spread</strong></td><td>Long Put(high X) + Short Put(low X)</td><td>Moderately bearish</td></tr>
+    <tr><td><strong>Long Straddle</strong></td><td>Long Call + Long Put (same X)</td><td>High volatility (direction?)</td></tr>
     <tr><td><strong>Long Strangle</strong></td><td>Long OTM Call + Long OTM Put</td><td>Very high volatility</td></tr>
     <tr><td><strong>Butterfly</strong></td><td>3-strike combo</td><td>Low volatility</td></tr>
   </table>
